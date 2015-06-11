@@ -1,0 +1,17 @@
+/*=======================================================*/
+/* define functions and types for measuring time         */
+/*=======================================================*/
+
+#ifndef AP_TIME_H
+#define AP_TIME_H
+
+#include <stdint.h>
+#include "hwi/include/bqc/A2_inlines.h"
+#include "ap_config.h"
+
+typedef uint64_t ap_cycle_t;
+
+#define APCYCLES(TB) TB = GetTimeBase()
+#define APCTCONV(TB) (SEC_PER_CYCLE*((double) (TB)))
+
+#endif

@@ -1,0 +1,101 @@
+
+List of routines wiht an associated number of bytes that could be captured and recorded
+
+(*)    - message size retrieved from MPI_Status object
+(**)   - more than one byte count
+(***)  - number of bytes associated with the call not a message
+(****) - sum required to find count
+
+Routines with an associated number of bytes:
+X MPI_Send
+X MPI_Ssend
+X MPI_Rsend
+X MPI_Bsend
+X MPI_Isend
+X MPI_Issend
+X MPI_Irsend
+X MPI_Ibsend
+X MPI_Send_init
+X MPI_Ssend_init
+X MPI_Rsend_init
+X MPI_Bsend_init
+X MPI_Recv_init
+X MPI_Recv (*)
+X MPI_Irecv
+X MPI_Sendrecv (**)
+X MPI_Sendrecv_replace (**)
+  MPI_Buffer_attach (***)
+  MPI_Buffer_detach (***)
+X MPI_Bcast
+X MPI_Reduce
+X MPI_Allreduce
+X MPI_Reduce_scatter (****)
+X MPI_Gather (**)
+X MPI_Gatherv (**)
+X MPI_Scan
+X MPI_Exscan
+X MPI_Allgather (**)
+X MPI_Allgatherv (**)
+X MPI_Scatter
+X MPI_Scatterv (**)
+X MPI_Alltoall
+X MPI_Alltoallv (**) (****)
+X MPI_Alltoallw (**) (****)
+X MPI_File_iread
+X MPI_File_iread_at
+X MPI_File_iread_shared
+X MPI_File_iwrite
+X MPI_File_iwrite_at
+X MPI_File_iwrite_shared
+  MPI_File_preallocate (***)
+X MPI_File_read
+X MPI_File_read_all
+X MPI_File_read_all_begin
+  MPI_File_read_all_end 
+X MPI_File_read_at
+X MPI_File_read_at_all
+X MPI_File_read_at_all_begin
+  MPI_File_read_at_all_end
+X MPI_File_read_ordered
+X MPI_File_read_ordered_begin
+  MPI_File_read_ordered_end
+X MPI_File_read_shared
+X MPI_File_write
+X MPI_File_write_all
+X MPI_File_write_all_begin
+  MPI_File_write_all_end
+X MPI_File_write_at
+X MPI_File_write_at_all
+X MPI_File_write_at_all_begin
+  MPI_File_write_at_all_end
+X MPI_File_write_ordered
+X MPI_File_write_ordered_begin
+  MPI_File_write_ordered_end
+x MPI_File_write_shared
+  
+Routines without an associated number of bytes:
+  MPI_Init
+  MPI_Init_thread
+  MPI_Comm_rank
+  MPI_Comm_size
+  MPI_Probe
+  MPI_Iprobe
+  MPI_Test
+  MPI_Testany
+  MPI_Testall
+  MPI_Testsome
+  MPI_Wait
+  MPI_Waitany
+  MPI_Waitall
+  MPI_Waitsome
+  MPI_Start
+  MPI_Startall
+  MPI_Barrier
+  MPI_File_close
+  MPI_File_delete
+  MPI_File_open
+  MPI_File_seek
+  MPI_File_seek_shared
+  MPI_File_set_view
+  MPI_File_sync
+  MPI_Finalize

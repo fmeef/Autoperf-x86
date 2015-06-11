@@ -1,0 +1,307 @@
+#include <bgpm/include/bgpm.h>
+#include <spi/include/kernel/process.h>
+#include <spi/include/kernel/location.h>
+#include "autoperf.h"
+#include "hpm/ap_hpm.h"
+
+
+static unsigned int pEventList[HPM_NUM_P_EVENTS] =   { PEVT_LSU_COMMIT_LD_MISSES,      //  0
+                                                       PEVT_LSU_COMMIT_CACHEABLE_LDS,  //  1
+                                                       PEVT_L1P_BAS_MISS,              //  2
+                                                       PEVT_INST_XU_ALL,               //  3
+                                                       PEVT_INST_QFPU_ALL,             //  4
+                                                       PEVT_INST_QFPU_FPGRP1};         //  5
+
+static unsigned int L2EventList[HPM_NUM_L2_EVENTS] = { PEVT_L2_HITS,
+                                                       PEVT_L2_MISSES,
+                                                       PEVT_L2_FETCH_LINE,
+                                                       PEVT_L2_STORE_LINE};
+
+static unsigned int NWEventList[HPM_NUM_NW_EVENTS] = { PEVT_NW_USER_PP_SENT,
+                                                       PEVT_NW_USER_PP_RECV};
+
+static int disabled = 0;
+
+static int punitHandle;
+static int L2Handle;
+static int NWHandle;
+
+static ap_cycle_t startCycle, stopCycle, elapsedCycles;
+static double elapsedTime;
+static uint64_t pCounts[HPM_NUM_P_EVENTS];
+static uint64_t L2Counts[HPM_NUM_L2_EVENTS];
+static uint64_t NWCounts[HPM_NUM_NW_EVENTS];
+static int pIds[HPM_NUM_P_EVENTS];
+static int L2Ids[HPM_NUM_L2_EVENTS];
+static int NWIds[HPM_NUM_NW_EVENTS];
+
+
+/*=================================================================*/
+/* Initialize the counters                                         */
+/*=================================================================*/
+
+int AP_HPM_Init(int disabledArg) {
+
+  /*---------------------------------------------------*/
+  /* return immediately if not logging data            */
+  /*---------------------------------------------------*/
+
+  disabled = disabledArg;
+  if (disabled != 0) return 0;
+
+  /*------------------*/
+  /* Get settings     */
+  /*------------------*/
+
+  ap_settings_t *settings = AP_getSettings();
+
+  /*--------------------------------------------------*/
+  /* Initialize hardware performance counters         */
+  /*--------------------------------------------------*/
+
+  if (settings->flags.debug_level == 0) Bgpm_PrintOnError(0);
+  Bgpm_ExitOnError(0);
+
+  int err = Bgpm_Init(BGPM_MODE_HWDISTRIB);
+  if (err != 0) { disabled = 1; return 1; }
+
+  /*--------------------------------------------------*/
+  /* Add P Unit events                                */
+  /*--------------------------------------------------*/
+
+  punitHandle = Bgpm_CreateEventSet();
+  if (punitHandle < 0) { disabled = 1; return 2; }
+
+  err = Bgpm_AddEventList(punitHandle, pEventList, HPM_NUM_P_EVENTS);
+  if (err != 0) { disabled = 1; return 3; }
+
+  uint64_t thdMask = Kernel_ThreadMask(Kernel_MyTcoord());
+  err = Bgpm_Attach(punitHandle, thdMask, 0);
+  if (err != 0) { disabled = 1; return 4; }
+
+  err = Bgpm_Reset(punitHandle);
+  if (err != 0) { disabled = 1; return 5; }
+
+  /*--------------------------------------------------*/
+  /* Add L2 Unit events                               */
+  /*--------------------------------------------------*/
+
+  L2Handle = Bgpm_CreateEventSet();
+  if (L2Handle < 0) { disabled = 1; return 6; }
+
+  err = Bgpm_AddEventList(L2Handle, L2EventList, HPM_NUM_L2_EVENTS);
+  if (err != 0) { disabled = 1; return 7; }
+
+  err = Bgpm_Apply(L2Handle);
+  if (err != 0) { disabled = 1; return 8; }
+
+  err = Bgpm_Reset(L2Handle);
+  if (err != 0) { disabled = 1; return 9; }
+
+  /*--------------------------------------------------*/
+  /* Add NW Unit events                               */
+  /*--------------------------------------------------*/
+
+  NWHandle = Bgpm_CreateEventSet();
+  if (NWHandle < 0) { disabled = 1; return 10; }
+
+  err = Bgpm_AddEventList(NWHandle, NWEventList, HPM_NUM_NW_EVENTS);
+  if (err != 0) { disabled = 1; return 11; }
+
+  err = Bgpm_Attach(NWHandle, UPC_NW_ALL_LINKS, 0);
+  if (err != 0) { disabled = 1; return 12; }
+
+//err = Bgpm_Reset(NWHandle);  // TODO look at setup and handling of NW events
+//if (err != 0) { disabled = 1; return 13; }  // TODO look at setup and handling of NW events
+
+  return 0;
+}
+
+
+/*===============================================================*/
+/* Start hardware performance counters                           */
+/*===============================================================*/
+int AP_HPM_Start() {
+
+  /*-------------------------------*/
+  /* Return if not collecting data */
+  /*-------------------------------*/
+
+  if (disabled != 0) return 0;
+
+  /*-------------------------------*/
+  /* start counters                */
+  /*-------------------------------*/
+
+  int err;
+  err = Bgpm_Start(NWHandle);
+//if (err != 0) { disabled = 1; return 1; } //TODO look at setup and handling of NW events
+
+  err = Bgpm_Start(L2Handle);
+  if (err != 0) { disabled = 1; return 2; }
+
+  err = Bgpm_Start(punitHandle);
+  if (err != 0) { disabled = 1; return 3; }
+
+  /*-------------------------------*/
+  /* record cycle                  */
+  /*-------------------------------*/
+
+  APCYCLES(startCycle);
+
+
+  return 0;
+}
+
+
+/*===============================================================*/
+/* Stop hardware performance counters                            */
+/*===============================================================*/
+int AP_HPM_Stop() {
+
+  /*-------------------------------*/
+  /* Return if not collecting data */
+  /*-------------------------------*/
+
+  if (disabled != 0) return 0;
+
+  /*-------------------------------*/
+  /* record cycle                  */
+  /*-------------------------------*/
+
+  APCYCLES(stopCycle);
+
+  /*------------------------------*/
+  /* stop counters                */
+  /*------------------------------*/
+
+  int err;
+  err = Bgpm_Stop(punitHandle);
+  if (err != 0) { disabled = 1; return 1; }
+
+  err = Bgpm_Stop(L2Handle);
+  if (err != 0) { disabled = 1; return 2; }
+
+  err = Bgpm_Stop(NWHandle);
+//if (err != 0) { disabled = 1; return 3; } //TODO look at setup and handling of NW events
+
+
+  return 0;
+}
+
+
+/*===============================================================*/
+/* Finalize counter data collection                              */
+/*===============================================================*/
+int AP_HPM_Finalize() {
+
+  /*-------------------------------*/
+  /* Return if not collecting data */
+  /*-------------------------------*/
+
+  if (disabled != 0) return 0;
+
+  /*---------------------------------------------------*/
+  /* Read counter data                                 */
+  /*---------------------------------------------------*/
+
+  int k, id, err;
+  uint64_t counterValue;
+
+  for (k=0; k<HPM_NUM_P_EVENTS; k++) {
+    err = Bgpm_ReadEvent(punitHandle, k, &counterValue);
+    if (err != 0) { disabled = 1; return 1; }
+    pCounts[k] = counterValue;
+
+    id = Bgpm_GetEventId(punitHandle, k);
+    if (id <= 0) { disabled = 1; return 2; }
+    pIds[k] = id;
+  }
+
+  for (k=0; k<HPM_NUM_L2_EVENTS; k++) {
+    err = Bgpm_ReadEvent(L2Handle, k, &counterValue);
+    if (err != 0) { disabled = 1; return 3; }
+    L2Counts[k] = counterValue;
+
+    id = Bgpm_GetEventId(L2Handle, k);
+    if (id <= 0) { disabled = 1; return 4; }
+    L2Ids[k] = id;
+  }
+
+  for (k=0; k<HPM_NUM_NW_EVENTS; k++) {
+    err = Bgpm_ReadEvent(NWHandle, k, &counterValue);
+    if (err != 0) { disabled = 1; return 5; }
+    NWCounts[k] = counterValue;
+
+    id = Bgpm_GetEventId(NWHandle, k);
+    if (id <= 0) { disabled = 1; return 6; }
+    NWIds[k] = id;
+  }
+  
+  elapsedCycles = stopCycle - startCycle;
+  elapsedTime = APCTCONV(elapsedCycles);
+
+
+  return 0;
+}
+
+
+/*===============================================================*/
+/* Get HPM data                                                  */
+/*===============================================================*/
+int AP_HPM_GetData(ap_hpmData_t *data) {
+
+  /*-------------------------------*/
+  /* Return if not collecting data */
+  /*-------------------------------*/
+
+  data->disabled = disabled;
+  if (disabled != 0) return 0;
+
+  /*---------------------------------------------------*/
+  /* copy data                                         */
+  /*---------------------------------------------------*/
+
+  data->startCycle = startCycle;
+  data->stopCycle = stopCycle;
+  data->elapsedCycles = elapsedCycles;
+  data->elapsedTime = elapsedTime;
+
+  data->pFirstIndex = 0;
+  data->pLastIndex = data->pFirstIndex + HPM_NUM_P_EVENTS - 1;
+  data->L2FirstIndex = data->pLastIndex + 1;
+  data->L2LastIndex =  data->L2FirstIndex + HPM_NUM_L2_EVENTS - 1;
+  data->NWFirstIndex = data->L2LastIndex + 1;
+  data->NWLastIndex =  data->NWFirstIndex + HPM_NUM_NW_EVENTS - 1;
+  
+  int k;
+  for (k=0; k<HPM_NUM_P_EVENTS; k++) {
+    data->counts[data->pFirstIndex+k] = pCounts[k];
+    data->ids[data->pFirstIndex+k] = pIds[k];
+  }
+
+  for (k=0; k<HPM_NUM_L2_EVENTS; k++) {
+    data->counts[data->L2FirstIndex+k] = L2Counts[k];
+    data->ids[data->L2FirstIndex+k] = L2Ids[k];
+  }
+
+  for (k=0; k<HPM_NUM_NW_EVENTS; k++) {
+    data->counts[data->NWFirstIndex+k] = NWCounts[k];
+    data->ids[data->NWFirstIndex+k] = NWIds[k];
+  }
+
+
+  return 0;
+}
+
+
+/*===============================================================*/
+/* Return event label for id, null if bad id                     */
+/*===============================================================*/
+const char* AP_HPM_GetEventName(int id) {
+
+  const char *name = Bgpm_GetEventIdLabel((unsigned int) id);
+
+
+  return name;
+}

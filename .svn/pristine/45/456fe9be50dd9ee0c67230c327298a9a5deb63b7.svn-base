@@ -1,0 +1,305 @@
+
++ PEVT_INST_ALL                 - Count all completed instructions
++ PEVT_INST_XU_ALL              - All integer pipeline instructions
++ PEVT_INST_QFPU_ALL            - All floating point/AXU instructions
++ PEVT_INST_QFPU_FPGRP1         - Floating point operation counts, largest group
+  PEVT_INST_XU_LD               - Load instructions completed
+  PEVT_INST_XU_ST               - Store instructions completed
+  PEVT_INST_XU_FLD              - Floating point load instructions completed
+  PEVT_INST_XU_FST              - Store instructions completed
+  PEVT_INST_XU_QLD              - Quad floating point load instructions completed
+  PEVT_INST_XU_QST              - Quad floating point store instructions completed
+- PEVT_INST_QFPU_FOTH           - Single floating point 'other' instructions completed
+- PEVT_INST_QFPU_FRES           - Single floating point recip est instructions completed
+- PEVT_INST_QFPU_FADD           - Single floating point add instructions completed
+- PEVT_INST_QFPU_FCVT           - Single floating point convert iinstructions completed
+- PEVT_INST_QFPU_FCMP           - Single floating point compare instructions completed
+- PEVT_INST_QFPU_FDIV           - Single floating point division instructions completed
+- PEVT_INST_QFPU_FMOV           - Single floating point move instructions completed
+- PEVT_INST_QFPU_FMA            - Single floating point mult add instructions completed
+- PEVT_INST_QFPU_FMUL           - Single floating point mult instructions completed
+- PEVT_INST_QFPU_FRND           - Single floating point round instructions completed
+- PEVT_INST_QFPU_FSQE           - Single floating point sqr est instructions completed
+- PEVT_INST_QFPU_FSQ            - Single floating point sqr instructions completed
+- PEVT_INST_QFPU_QMOV           - Quad floating point move instructions completed
+- PEVT_INST_QFPU_QOTH           - Quad floating point 'other' instructions completed
+- PEVT_INST_QFPU_QADD           - Quad floating point add instructions completed
+- PEVT_INST_QFPU_QMUL           - Quad floating point multiply instructions completed
+- PEVT_INST_QFPU_QRES           - Quad floating point rec est instructions completed
+- PEVT_INST_QFPU_QMA            - Quad floating point mult add instructions completed
+- PEVT_INST_QFPU_QRND           - Quad floating point round instructions completed
+- PEVT_INST_QFPU_QCVT           - Quad floating point convert instructions completed
+- PEVT_INST_QFPU_QCMP           - Quad floating point compare instructions completed
+ 
+- PEVT_INST_QFPU_UCODE          - Count complete FP instructions which are microcoded
+
+- PEVT_AXU_UCODE_OPS_COMMIT     - Committed AXU ucode sequences
+
+- PEVT_XU_ANY_FLUSH             - Number of cycles flush is asserted to the IU
+- PEVT_XU_COMMIT                - Number of XU operations committed, include XU ucode, 1 op per AXU ucode
+- PEVT_XU_PPC_COMMIT            - Number of instruction committed, ucode seq counts as 1, include AXU instructions
+- PEVT_XU_TIMEBASE_TICK         - Timebase ticks, same as gettimebase
+
++ PEVT_LSU_COMMIT_LD_MISSES     - Completed loads that miss L1D
++ PEVT_LSU_COMMIT_CACHEABLE_LDS - Completed cachable loads
+
++ PEVT_L1P_BAS_MISS             - Misses in L1p by prefetchable loads
+  PEVT_L1P_BAS_HIT              - Hits in prefetch
+  PEVT_L1P_BAS_LD               - Loads
+
++ PEVT_CYCLES                   - total cpu cycles
+
+- PEVT_IU_TOT_ISSUE_COUNT       - all instructions issued per thread
+- PEVT_IU_IS1_STALL_CYC         - register dependency stall
+- PEVT_IU_AXU_DEP_HIT_CYC       - stalled for any axu dependency
+- PEVT_IU_FXU_DEP_HIT_CYC       - Stalled for any fxu dependency
+- PEVT_IU_IU0_REDIR_CYC         - Cycles IU0 is flushed for any reason
+- PEVT_IU_IL1_MISS              - threads is waiting for reaload from L2
+- PEVT_IU_IS2_STALL_CYC         - Instruction issue stall
+- PEVT_IU_AXU_FXU_DEP_HIT_CYC   - Stalled for any AXU/FXU dependency
+- PEVT_IU_IERAT_MISS            - IERAT miss occurences
+
+  PEVT_L2_HITS                  - hits in L2, both load and store
+  PEVT_L2_MISSES                - misses in L2, both load and store
+  PEVT_L2_FETCH_LINE	        - 128 bytes loaded from main memory
+  PEVT_L2_STORE_LINE            - 128 bytes stored to main memory
+
+  PEVT_NW_USER_PP_SENT          - number of 32 byte user ptp packets chunks sent, includes pass-through
+  PEVT_NW_USER_PP_RECV          - number of 32 bytes user ptp packets received, includes pass-through
+  UPC_NW_ALL_LINKS              - (mask to nw events)
+
+--
+
+x PEVT_IU_AXU_FXU_DEP_HIT_CYC
+x PEVT_LSU_COMMIT_LD_MISSES
+x PEVT_LSU_COMMIT_CACHEABLE_LDS
+x PEVT_L1P_BAS_MISS
+x PEVT_INST_XU_ALL
+x PEVT_INST_QFPU_ALL
+
+x PEVT_LSU_COMMIT_LD_MISSES
+x PEVT_LSU_COMMIT_CACHEABLE_LDS
+x PEVT_L1P_BAS_MISS
+x PEVT_INST_XU_ALL
+x PEVT_INST_QFPU_ALL
+x PEVT_INST_QFPU_FPGRP1
+
+x PEVT_LSU_COMMIT_LD_MISSES
+x PEVT_L1P_BAS_HIT
+x PEVT_L1P_BAS_MISS
+x PEVT_L1P_BAS_LD
+x PEVT_INST_XU_LD
+x PEVT_INST_XU_ST
+x PEVT_INST_XU_FLD
+x PEVT_INST_XU_FST
+x PEVT_INST_XU_QLD
+x PEVT_INST_XU_QST
+x PEVT_INST_XU_ALL
+x PEVT_INST_ALL
+
+x PEVT_INST_ALL
+x PEVT_INST_QFPU_ALL
+x PEVT_INST_QFPU_FOTH
+x PEVT_INST_QFPU_FRES
+x PEVT_INST_QFPU_FADD
+x PEVT_INST_QFPU_FCVT
+x PEVT_INST_QFPU_FCMP
+x PEVT_INST_QFPU_FDIV
+x PEVT_INST_QFPU_FMOV
+x PEVT_INST_QFPU_FMA
+x PEVT_INST_QFPU_FMUL
+x PEVT_INST_QFPU_FRND
+x PEVT_INST_QFPU_FSQE
+x PEVT_INST_QFPU_FSQ
+x PEVT_INST_QFPU_QMOV
+x PEVT_INST_QFPU_QOTH
+x PEVT_INST_QFPU_QADD
+x PEVT_INST_QFPU_QMUL
+x PEVT_INST_QFPU_QRES
+x PEVT_INST_QFPU_QMA
+x PEVT_INST_QFPU_QRND
+x PEVT_INST_QFPU_QCVT
+x PEVT_INST_QFPU_QCMP
+x PEVT_INST_QFPU_FPGRP1
+
+x PEVT_INST_QFPU_FRES
+x PEVT_INST_QFPU_FADD
+x PEVT_INST_QFPU_FCVT
+x PEVT_INST_QFPU_FCMP
+x PEVT_INST_QFPU_FDIV
+x PEVT_INST_QFPU_FMOV
+x PEVT_INST_QFPU_FMA
+x PEVT_INST_QFPU_FMUL
+x PEVT_INST_QFPU_FRND
+x PEVT_INST_QFPU_FSQE
+x PEVT_INST_QFPU_FSQ
+
+x PEVT_INST_QFPU_FOTH
+x PEVT_INST_QFPU_FRES
+x PEVT_INST_QFPU_FADD
+x PEVT_INST_QFPU_FCVT
+x PEVT_INST_QFPU_FCMP
+x PEVT_INST_QFPU_FDIV
+
+x PEVT_INST_QFPU_FMOV
+x PEVT_INST_QFPU_FMA
+x PEVT_INST_QFPU_FMUL
+x PEVT_INST_QFPU_FRND
+x PEVT_INST_QFPU_FSQE
+x PEVT_INST_QFPU_FSQ
+
+x PEVT_INST_ALL
+x PEVT_INST_QFPU_ALL
+x PEVT_INST_QFPU_QMOV
+x PEVT_INST_QFPU_QOTH
+x PEVT_INST_QFPU_QADD
+x PEVT_INST_QFPU_QMUL
+x PEVT_INST_QFPU_QRES
+x PEVT_INST_QFPU_QMA
+x PEVT_INST_QFPU_QRND
+x PEVT_INST_QFPU_QCVT
+x PEVT_INST_QFPU_QCMP
+x PEVT_INST_QFPU_FPGRP1
+
+x PEVT_INST_ALL
+x PEVT_INST_QFPU_ALL
+x PEVT_INST_QFPU_QMOV
+x PEVT_INST_QFPU_QOTH
+x PEVT_INST_QFPU_QADD
+x PEVT_INST_QFPU_QMUL
+
+x PEVT_INST_QFPU_QRES
+x PEVT_INST_QFPU_QMA
+x PEVT_INST_QFPU_QRND
+x PEVT_INST_QFPU_QCVT
+x PEVT_INST_QFPU_QCMP
+x PEVT_INST_QFPU_FPGRP1
+
+x PEVT_INST_XU_FLD
+x PEVT_INST_XU_FST
+x PEVT_INST_XU_QLD
+x PEVT_INST_XU_QST
+  PEVT_INST_XU_BITS
+  PEVT_INST_XU_BRC
+  PEVT_INST_XU_BRU
+  PEVT_INST_XU_CINV
+  PEVT_INST_XU_CSTO
+  PEVT_INST_XU_CTCH 
+  PEVT_INST_XU_IADD
+  PEVT_INST_XU_ICMP
+  PEVT_INST_XU_IDIV
+  PEVT_INST_XU_ILOG
+  PEVT_INST_XU_IMOV
+  PEVT_INST_XU_IMUL
+  PEVT_INST_XU_INT
+x PEVT_INST_XU_LD
+x PEVT_INST_XU_ST
+  PEVT_INST_XU_LSCX
+  PEVT_INST_XU_SYNC
+  PEVT_INST_XU_TLB
+  PEVT_INST_XU_TLBI
+x PEVT_INST_XU_ALL
+
+x PEVT_INST_XU_FLD
+x PEVT_INST_XU_FST
+x PEVT_INST_XU_QLD
+x PEVT_INST_XU_QST
+  PEVT_INST_XU_BITS
+  PEVT_INST_XU_BRC
+  PEVT_INST_XU_BRU
+  PEVT_INST_XU_CINV
+  PEVT_INST_XU_CSTO
+  PEVT_INST_XU_CTCH
+  PEVT_INST_XU_IADD
+  PEVT_INST_XU_ICMP
+
+x PEVT_INST_XU_FLD
+x PEVT_INST_XU_FST
+x PEVT_INST_XU_QLD
+x PEVT_INST_XU_QST
+  PEVT_INST_XU_BITS
+  PEVT_INST_XU_BRC
+
+  PEVT_INST_XU_BRU
+  PEVT_INST_XU_CINV
+  PEVT_INST_XU_CSTO
+  PEVT_INST_XU_CTCH 
+  PEVT_INST_XU_IADD
+  PEVT_INST_XU_ICMP
+
+  PEVT_INST_XU_IDIV
+  PEVT_INST_XU_ILOG
+  PEVT_INST_XU_IMOV
+  PEVT_INST_XU_IMUL
+  PEVT_INST_XU_INT
+x PEVT_INST_XU_LD
+x PEVT_INST_XU_ST
+  PEVT_INST_XU_LSCX
+  PEVT_INST_XU_SYNC
+  PEVT_INST_XU_TLB
+  PEVT_INST_XU_TLBI
+x PEVT_INST_XU_ALL
+
+  PEVT_INST_XU_IDIV
+  PEVT_INST_XU_ILOG
+  PEVT_INST_XU_IMOV
+  PEVT_INST_XU_IMUL
+  PEVT_INST_XU_INT
+x PEVT_INST_XU_LD
+
+x PEVT_INST_XU_ST
+  PEVT_INST_XU_LSCX
+  PEVT_INST_XU_SYNC
+  PEVT_INST_XU_TLB
+  PEVT_INST_XU_TLBI
+x PEVT_INST_XU_ALL
+
+x PEVT_CYCLES
+x PEVT_IU_IS1_STALL_CYC
+x PEVT_IU_TOT_ISSUE_COUNT
+x PEVT_IU_IS2_STALL_CYC
+x PEVT_IU_AXU_FXU_DEP_HIT_CYC
+x PEVT_XU_ANY_FLUSH
+x PEVT_XU_COMMIT
+
+x PEVT_INST_XU_ALL
+x PEVT_INST_QFPU_UCODE
+x PEVT_AXU_UCODE_OPS_COMMIT
+x PEVT_XU_PPC_COMMIT
+x PEVT_IU_AXU_DEP_HIT_CYC
+x PEVT_IU_FXU_DEP_HIT_CYC
+
+x PEVT_IU_IU0_REDIR_CYC
+x PEVT_XU_ANY_FLUSH
+x PEVT_IU_IL1_MISS
+x PEVT_IU_IERAT_MISS
+
+x PEVT_IU_IS2_STALL_CYC
+x PEVT_IU_AXU_FXU_DEP_HIT_CYC
+
+  PEVT_IU_FXU_DEP_HIT_CY
+x PEVT_IU_IERAT_MISS
+
+
+----
+
+
+  PEVT_INST_XU_BITS
+  PEVT_INST_XU_BRC
+  PEVT_INST_XU_BRU
+  PEVT_INST_XU_CINV
+  PEVT_INST_XU_CSTO
+  PEVT_INST_XU_CTCH 
+  PEVT_INST_XU_IADD
+  PEVT_INST_XU_ICMP
+  PEVT_INST_XU_IDIV
+  PEVT_INST_XU_ILOG
+  PEVT_INST_XU_IMOV
+  PEVT_INST_XU_IMUL
+  PEVT_INST_XU_INT
+  PEVT_INST_XU_LSCX
+  PEVT_INST_XU_SYNC
+  PEVT_INST_XU_TLB
+  PEVT_INST_XU_TLBI
+
+  PEVT_IU_FXU_DEP_HIT_CY

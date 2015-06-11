@@ -1,0 +1,275 @@
+void mpi_init ( MPI_Fint *ierr )
+C MPI_Init( 0, 0 )
+
+void mpi_init_thread ( MPI_Fint *v1, MPI_Fint *v2, MPI_Fint *ierr )
+C MPI_Init_thread( 0, 0, (int)*v1, v2 )
+
+void mpi_comm_size ( MPI_Fint *v1, MPI_Fint *v2, MPI_Fint *ierr )
+C MPI_Comm_size( (MPI_Comm)(*v1), v2 )
+
+void mpi_comm_rank ( MPI_Fint *v1, MPI_Fint *v2, MPI_Fint *ierr )
+C MPI_Comm_rank( (MPI_Comm)(*v1), v2 )
+
+void mpi_send ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_Send( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6) )
+
+void mpi_ssend ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_Ssend( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6) )
+
+void mpi_rsend ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_Rsend( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6) )
+
+void mpi_bsend ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_Bsend( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6) )
+
+void mpi_isend ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Isend( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Request *)(v7) )
+
+void mpi_issend ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Issend( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Request *)(v7) )
+
+void mpi_irsend ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Irsend( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Request *)(v7) )
+
+void mpi_ibsend ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Ibsend( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Request *)(v7) )
+
+void mpi_send_init ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Send_init( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Request *)(v7) )
+
+void mpi_ssend_init ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Ssend_init( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Request *)(v7) )
+
+void mpi_rsend_init ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Rsend_init( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Request *)(v7) )
+
+void mpi_bsend_init ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Bsend_init( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Request *)(v7) )
+
+void mpi_recv_init ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Recv_init( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Request *)(v7) )
+
+void mpi_recv ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Recv( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Status *)v7 )
+
+void mpi_irecv ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Irecv( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (MPI_Comm)(*v6), (MPI_Request *)(v7) )
+
+void mpi_sendrecv ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, void*v6, MPI_Fint *v7, MPI_Fint *v8, MPI_Fint *v9, MPI_Fint *v10, MPI_Fint *v11, MPI_Fint *v12, MPI_Fint *ierr )
+C MPI_Sendrecv( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, v6, (int)*v7, (MPI_Datatype)(*v8), (int)*v9, (int)*v10, (MPI_Comm)(*v11), (MPI_Status *)v12 ) 
+
+void mpi_sendrecv_replace ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *v8, MPI_Fint *v9, MPI_Fint *ierr )
+C MPI_Sendrecv_replace( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (int)*v5, (int)*v6, (int)*v7, (MPI_Comm)(*v8), (MPI_Status *)v9 )
+
+void mpi_buffer_attach ( void*v1, MPI_Fint *v2, MPI_Fint *ierr )
+C MPI_Buffer_attach( v1, (int)*v2 )
+
+void mpi_buffer_detach ( void*v1, MPI_Fint *v2, MPI_Fint *ierr )
+C MPI_Buffer_detach( &t1, v2 )
+
+void mpi_probe ( MPI_Fint *v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *ierr )
+C MPI_Probe( (int)*v1, (int)*v2, (MPI_Comm)(*v3), (MPI_Status *)v4 )
+
+void mpi_iprobe ( MPI_Fint *v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_Iprobe( (int)*v1, (int)*v2, (MPI_Comm)(*v3), &l4, (MPI_Status *)v5 )
+
+void mpi_test ( MPI_Fint *v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *ierr )
+C MPI_Test( (MPI_Request *)(v1), &l2, (MPI_Status *)v3 )
+
+void mpi_testany ( MPI_Fint *v1, MPI_Fint v2[], MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_Testany( (int)*v1, (MPI_Request *)(v2), &l3, &l4, (MPI_Status *)v5 )
+
+void mpi_testall ( MPI_Fint *v1, MPI_Fint v2[], MPI_Fint *v3, MPI_Fint v4[], MPI_Fint *ierr )
+C MPI_Testall( (int)*v1, (MPI_Request *)(v2), &l3, (MPI_Status *)v4 )
+
+void mpi_testsome ( MPI_Fint *v1, MPI_Fint v2[], MPI_Fint *v3, MPI_Fint v4[], MPI_Fint v5[], MPI_Fint *ierr )
+C MPI_Testsome( (int)*v1, (MPI_Request *)(v2), v3, v4, (MPI_Status *)v5 )
+
+void mpi_wait ( MPI_Fint *v1, MPI_Fint *v2, MPI_Fint *ierr )
+C MPI_Wait( (MPI_Request *)(v1), (MPI_Status *)v2 )
+
+void mpi_waitany ( MPI_Fint *v1, MPI_Fint v2[], MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *ierr )
+C MPI_Waitany( (int)*v1, (MPI_Request *)(v2), &l3, (MPI_Status *)v4 )
+
+void mpi_waitall ( MPI_Fint *v1, MPI_Fint v2[], MPI_Fint v3[], MPI_Fint *ierr )
+C MPI_Waitall( (int)*v1, (MPI_Request *)(v2), (MPI_Status *)v3 )
+
+void mpi_waitsome ( MPI_Fint *v1, MPI_Fint v2[], MPI_Fint *v3, MPI_Fint v4[], MPI_Fint v5[], MPI_Fint *ierr )
+C MPI_Waitsome( (int)*v1, (MPI_Request *)(v2), v3, v4, (MPI_Status *)v5 )
+
+void mpi_start ( MPI_Fint *v1, MPI_Fint *ierr )
+C MPI_Start( (MPI_Request *)(v1) )
+
+void mpi_startall ( MPI_Fint *v1, MPI_Fint v2[], MPI_Fint *ierr )
+C MPI_Startall( (int)*v1, (MPI_Request *)(v2) )
+
+void mpi_bcast ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_Bcast( v1, (int)*v2, (MPI_Datatype)(*v3), (int)*v4, (MPI_Comm)(*v5) )
+
+void mpi_barrier ( MPI_Fint *v1, MPI_Fint *ierr )
+C MPI_Barrier( (MPI_Comm)(*v1) )
+
+void mpi_gather ( void*v1, MPI_Fint *v2, MPI_Fint *v3, void*v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *v8, MPI_Fint *ierr )
+C MPI_Gather( v1, (int)*v2, (MPI_Datatype)(*v3), v4, (int)*v5, (MPI_Datatype)(*v6), (int)*v7, (MPI_Comm)(*v8) )
+
+void mpi_gatherv ( void*v1, MPI_Fint *v2, MPI_Fint *v3, void*v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *v8, MPI_Fint *v9, MPI_Fint *ierr )
+C MPI_Gatherv( v1, (int)*v2, (MPI_Datatype)(*v3), v4, v5, v6, (MPI_Datatype)(*v7), (int)*v8, (MPI_Comm)(*v9) )
+
+void mpi_scatter ( void*v1, MPI_Fint *v2, MPI_Fint *v3, void*v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *v8, MPI_Fint *ierr )
+C MPI_Scatter( v1, (int)*v2, (MPI_Datatype)(*v3), v4, (int)*v5, (MPI_Datatype)(*v6), (int)*v7, (MPI_Comm)(*v8) )
+
+void mpi_scatterv ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, void*v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *v8, MPI_Fint *v9, MPI_Fint *ierr )
+C MPI_Scatterv( v1, v2, v3, (MPI_Datatype)(*v4), v5, (int)*v6, (MPI_Datatype)(*v7), (int)*v8, (MPI_Comm)(*v9) )
+
+void mpi_scan ( void*v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_Scan( v1, v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Op)*v5, (MPI_Comm)(*v6))
+
+void mpi_allgather ( void*v1, MPI_Fint *v2, MPI_Fint *v3, void*v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Allgather( v1, (int)*v2, (MPI_Datatype)(*v3), v4, (int)*v5, (MPI_Datatype)(*v6), (MPI_Comm)(*v7) )
+
+void mpi_allgatherv ( void*v1, MPI_Fint *v2, MPI_Fint *v3, void*v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *v8, MPI_Fint *ierr )
+C MPI_Allgatherv( v1, (int)*v2, (MPI_Datatype)(*v3), v4, v5, v6, (MPI_Datatype)(*v7), (MPI_Comm)(*v8) )
+
+void mpi_reduce ( void*v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Reduce( v1, v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Op)*v5, (int)*v6, (MPI_Comm)(*v7) )
+
+void mpi_allreduce ( void*v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_Allreduce( v1, v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Op)*v5, (MPI_Comm)(*v6) )
+
+void mpi_reduce_scatter ( void*v1, void*v2, MPI_Fint v3[], MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_Reduce_scatter( v1, v2, v3, (MPI_Datatype)(*v4), (MPI_Op)*v5, (MPI_Comm)(*v6) )
+
+void mpi_alltoall ( void*v1, MPI_Fint *v2, MPI_Fint *v3, void*v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *ierr )
+C MPI_Alltoall( v1, (int)*v2, (MPI_Datatype)(*v3), v4, (int)*v5, (MPI_Datatype)(*v6), (MPI_Comm)(*v7) )
+
+void mpi_alltoallv ( void*v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *v4, void*v5, MPI_Fint *v6, MPI_Fint *v7, MPI_Fint *v8, MPI_Fint *v9, MPI_Fint *ierr) 
+C MPI_Alltoallv( v1, v2, v3, (MPI_Datatype)(*v4), v5, v6, v7, (MPI_Datatype)(*v8), (MPI_Comm)(*v9) )
+
+void mpi_alltoallw ( void*v1, MPI_Fint v2[], MPI_Fint v3[], MPI_Fint v4[], void*v5, MPI_Fint v6[], MPI_Fint v7[], MPI_Fint v8[], MPI_Fint *v9, MPI_Fint *ierr )
+C MPI_Alltoallw( v1, v2, v3, (MPI_Datatype *)(v4), v5, v6, v7, (MPI_Datatype *)(v8), (MPI_Comm)(*v9) )
+
+void mpi_exscan ( void*v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_Exscan( v1, v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Op)*v5, (MPI_Comm)(*v6) )
+
+void mpi_file_close ( MPI_Fint *v1, MPI_Fint *ierr )
+C MPI_File_close( &l1 )
+
+void mpi_file_delete ( char *v1 FORT_MIXED_LEN(d1), MPI_Fint *v2, MPI_Fint *ierr FORT_END_LEN(d1))
+C MPI_File_delete( p1, (MPI_Info)(*v2) )
+
+void mpi_file_iread ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPIO_Request*v5, MPI_Fint *ierr )
+C MPI_File_iread( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), v5 );
+
+void mpi_file_iread_at ( MPI_Fint *v1, MPI_Offset *v2, void*v3, MPI_Fint *v4, MPI_Fint *v5, MPIO_Request*v6, MPI_Fint *ierr )
+C MPI_File_iread_at( MPI_File_f2c(*v1), (MPI_Offset)*v2, v3, (int)*v4, (MPI_Datatype)(*v5), v6 )
+
+void mpi_file_iread_shared ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPIO_Request*v5, MPI_Fint *ierr )
+C MPI_File_iread_shared( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), v5 )
+
+void mpi_file_iwrite ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPIO_Request*v5, MPI_Fint *ierr )
+C MPI_File_iwrite( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), v5 )
+
+void mpi_file_iwrite_at ( MPI_Fint *v1, MPI_Offset *v2, void*v3, MPI_Fint *v4, MPI_Fint *v5, MPIO_Request*v6, MPI_Fint *ierr )
+C MPI_File_iwrite_at( MPI_File_f2c(*v1), (MPI_Offset)*v2, v3, (int)*v4, (MPI_Datatype)(*v5), v6 )
+
+void mpi_file_iwrite_shared ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPIO_Request*v5, MPI_Fint *ierr )
+C MPI_File_iwrite_shared( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), v5 )
+
+void mpi_file_open ( MPI_Fint *v1, char *v2 FORT_MIXED_LEN(d2), MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr FORT_END_LEN(d2) )
+C MPI_File_open( (MPI_Comm)(*v1), p2, (int)*v3, (MPI_Info)(*v4), &l5 )
+
+void mpi_file_preallocate ( MPI_Fint *v1, MPI_Offset *v2, MPI_Fint *ierr )
+C MPI_File_preallocate( MPI_File_f2c(*v1), (MPI_Offset)*v2 )
+
+void mpi_file_read ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_File_read( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Status *)v5 )
+
+void mpi_file_read_all ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_File_read_all( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Status *)v5 )
+
+void mpi_file_read_all_begin ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *ierr )
+C MPI_File_read_all_begin( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4) )
+
+void mpi_file_read_all_end ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *ierr )
+C MPI_File_read_all_end( MPI_File_f2c(*v1), v2, (MPI_Status *)v3 )
+
+void mpi_file_read_at ( MPI_Fint *v1, MPI_Offset *v2, void*v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_File_read_at( MPI_File_f2c(*v1), (MPI_Offset)*v2, v3, (int)*v4, (MPI_Datatype)(*v5), (MPI_Status *)v6 )
+
+void mpi_file_read_at_all ( MPI_Fint *v1, MPI_Offset *v2, void*v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_File_read_at_all( MPI_File_f2c(*v1), (MPI_Offset)*v2, v3, (int)*v4, (MPI_Datatype)(*v5), (MPI_Status *)v6 )
+
+void mpi_file_read_at_all_begin ( MPI_Fint *v1, MPI_Offset *v2, void*v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_File_read_at_all_begin( MPI_File_f2c(*v1), (MPI_Offset)*v2, v3, (int)*v4, (MPI_Datatype)(*v5) )
+
+void mpi_file_read_at_all_end ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *ierr )
+C MPI_File_read_at_all_end( MPI_File_f2c(*v1), v2, (MPI_Status *)v3 )
+
+void mpi_file_read_ordered ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_File_read_ordered( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Status *)v5 )
+
+void mpi_file_read_ordered_begin ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *ierr )
+C MPI_File_read_ordered_begin( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4) )
+
+void mpi_file_read_ordered_end ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *ierr )
+C MPI_File_read_ordered_end( MPI_File_f2c(*v1), v2, (MPI_Status *)v3 )
+
+void mpi_file_read_shared ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_File_read_shared( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Status *)v5 )
+
+void mpi_file_seek ( MPI_Fint *v1, MPI_Offset *v2, MPI_Fint *v3, MPI_Fint *ierr )
+C MPI_File_seek( MPI_File_f2c(*v1), (MPI_Offset)*v2, (int)*v3 )
+
+void mpi_file_seek_shared ( MPI_Fint *v1, MPI_Offset *v2, MPI_Fint *v3, MPI_Fint *ierr )
+C MPI_File_seek_shared( MPI_File_f2c(*v1), (MPI_Offset)*v2, (int)*v3 )
+
+void mpi_file_set_view ( MPI_Fint *v1, MPI_Offset *v2, MPI_Fint *v3, MPI_Fint *v4, char *v5 FORT_MIXED_LEN(d5), MPI_Fint *v6, MPI_Fint *ierr FORT_END_LEN(d5) )
+C MPI_File_set_view( MPI_File_f2c(*v1), (MPI_Offset)*v2, (MPI_Datatype)(*v3), (MPI_Datatype)(*v4), p5, (MPI_Info)(*v6) )
+
+void mpi_file_sync ( MPI_Fint *v1, MPI_Fint *ierr )
+C MPI_File_sync( MPI_File_f2c(*v1) )
+
+void mpi_file_write ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_File_write( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Status *)v5 )
+
+void mpi_file_write_all ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_File_write_all( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Status *)v5 )
+
+void mpi_file_write_all_begin ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *ierr )
+C MPI_File_write_all_begin( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4))
+
+void mpi_file_write_all_end ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *ierr )
+C MPI_File_write_all_end( MPI_File_f2c(*v1), v2, (MPI_Status *)v3 )
+
+void mpi_file_write_at ( MPI_Fint *v1, MPI_Offset *v2, void*v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_File_write_at( MPI_File_f2c(*v1), (MPI_Offset)*v2, v3, (int)*v4, (MPI_Datatype)(*v5), (MPI_Status *)v6 )
+
+void mpi_file_write_at_all ( MPI_Fint *v1, MPI_Offset *v2, void*v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *v6, MPI_Fint *ierr )
+C MPI_File_write_at_all( MPI_File_f2c(*v1), (MPI_Offset)*v2, v3, (int)*v4, (MPI_Datatype)(*v5), (MPI_Status *)v6 )
+
+void mpi_file_write_at_all_begin ( MPI_Fint *v1, MPI_Offset *v2, void*v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_File_write_at_all_begin( MPI_File_f2c(*v1), (MPI_Offset)*v2, v3, (int)*v4, (MPI_Datatype)(*v5) )
+
+void mpi_file_write_at_all_end ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *ierr )
+C MPI_File_write_at_all_end( MPI_File_f2c(*v1), v2, (MPI_Status *)v3 )
+
+void mpi_file_write_ordered ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_File_write_ordered( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Status *)v5 )
+
+void mpi_file_write_ordered_begin ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *ierr )
+C MPI_File_write_ordered_begin( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4) )
+
+void mpi_file_write_ordered_end ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *ierr )
+C MPI_File_write_ordered_end( MPI_File_f2c(*v1), v2, (MPI_Status *)v3 )
+
+void mpi_file_write_shared ( MPI_Fint *v1, void*v2, MPI_Fint *v3, MPI_Fint *v4, MPI_Fint *v5, MPI_Fint *ierr )
+C MPI_File_write_shared( MPI_File_f2c(*v1), v2, (int)*v3, (MPI_Datatype)(*v4), (MPI_Status *)v5 )
+
+void mpi_finalize ( MPI_Fint *ierr )
+C MPI_Finalize( )
+
+void mpi_type_size ( MPI_Fint *v1, MPI_Fint *v2, MPI_Fint *ierr )
+C MPI_Type_size( (MPI_Datatype)(*v1), v2 )
+
+void mpi_get_count ( MPI_Fint *v1, MPI_Fint *v2, MPI_Fint *v3, MPI_Fint *ierr )
+C MPI_Get_count( (MPI_Status *)(v1), (MPI_Datatype)(*v2), v3 )

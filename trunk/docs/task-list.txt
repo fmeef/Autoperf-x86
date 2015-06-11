@@ -1,0 +1,36 @@
+
+ - to-do, code changes:
+   - add routine and global var name prefix to avoid function and variable name collisions
+     - add autoperf prefix to hpm routine names
+   - review and verify string handling in Fortran wrapper routine interfaces 
+   - add locks for multithreaded mpi race conditions
+   - look for possible race conditions
+   - implement output to output directory location
+   - review timebase assembly implementation
+   - add data collection disable environment variables (MPI, Memory, HPM)
+   - ifdef PROFILE_BY_CALL_SITE
+   - ifdef TRACE_EVENTS and trace_start() and trace_stop()
+   - ifdef SAVE_ALL_TASKS
+   - ifdef out vprof
+   - remove sql/db stuff from library or refactor and ifdef
+   - changes to LogEvent
+     - remove TCONV conversion of time to double?
+     - convert event_count[], total_time[], and total_bytes[] to a struct
+   - specify output format
+   - testing: check the start up and finalize time at larges scale, is large, need to reduce
+   - evaluate coverage of mpi calls, determine if more should be added
+   - if possile build only one library for threaded and non-threaded code
+   - add doxygen comments
+   - add byte collection to (***) routines listed in routines-bytes-list.txt
+   - verify use of MPI_Status in Fortran wrapper mpi_recv for case of MPI_STATUS_IGNORE
+   - verify calculation of src, dest, and bytes args passed to logCall in mpiwrappers routines
+
+
+ - completed:
+   - split "mpitrace.c" into "mpiwrappers_c.c" and "mpiwrappers_f.c"
+   - review and verify C wrapper routine interfaces
+   - split mpiwrappers_f.c into mpiwrappers_f.c with routines and fpmpi.h with pmp.h interface
+   - renamed mpiwrappers_f.c to mpiwrappers_f_underscore.c
+   - renamed fortran_wrappers.c mpiwrappers_f.c
+   - removed prototypes of fortran entry points from mpiwrappers_f.c
+   - replaced fortran interface prototypes in fpmpi.h with prototypes from mpich-3.0.4
