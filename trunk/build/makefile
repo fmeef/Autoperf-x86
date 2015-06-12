@@ -2,7 +2,7 @@ LIBSRC = ../src/lib
 CC = gcc
 BGSYS = /bgsys/drivers/ppcfloor
 INC = -I$(BGSYS)/comm/gcc/include -I$(BGSYS) -I$(LIBSRC) -I$(BGSYS)/spi/include/kernel/cnk -I/opt/mpich2/include
-CFLAGS = -g -O3 $(INC)
+CFLAGS = -g -O3 $(INC) -lhwloc
 
 #------------------------------------------
 # targets

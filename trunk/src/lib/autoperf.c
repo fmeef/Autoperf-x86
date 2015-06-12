@@ -157,23 +157,31 @@ void AP_Init() {
   /*-------------------------------------------------------*/
   /* Get environment variables and set flags               */
   /*-------------------------------------------------------*/
-
+  printf("[DEBUG] begin AP_Init()\n");
   getEnv(&(apSettings.env));
   setFlags(&(apSettings.env), &(apSettings.flags));
+  printf("[DEBUG] flags set\n");
 
   /*-------------------------------------------------------*/
   /* Initialize components                                 */
   /*-------------------------------------------------------*/
 
   AP_Sys_Init(apSettings.flags.disable_sys);
+  printf("[DEBUG] finished AP_Sys_Init()\n");
   AP_Proc_Init(apSettings.flags.disable_proc);
+  printf("[DEBUG] finished AP_Proc_Init()\n");
   AP_HPM_Init(apSettings.flags.disable_hpm);
+  printf("[DEBUG] finished AP_HPM_Init()\n");
   AP_MPI_Init(apSettings.flags.disable_mpi);
+  printf("[DEBUG] finished AP_MPI_Init()\n");
 
   PMPI_Barrier(MPI_COMM_WORLD);
-
+  printf("[DEBUG] finished PMPI_Barrier\n");
+  sleep(3);
   AP_HPM_Start();
+  printf("[DEBUG] finished AP_HPM_Start()\n");
   AP_Proc_Start();
+  printf("[DEBUG] finished AP_Proc_start()\n");
 
 
   return;
