@@ -1,7 +1,8 @@
 LIBSRC = ../src/lib
 CC = gcc
 BGSYS = /bgsys/drivers/ppcfloor
-INC = -I$(BGSYS)/comm/gcc/include -I$(BGSYS) -I$(LIBSRC) -I$(BGSYS)/spi/include/kernel/cnk -I/opt/mpich2/include
+INC = -I$(LIBSRC) -I/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include -I /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/papi@5.3.0/include/ -I/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/hwloc@1.9/include/
+
 CFLAGS = -g -O3 $(INC) -lhwloc
 
 #------------------------------------------

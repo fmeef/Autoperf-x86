@@ -1,0 +1,379 @@
+../src/lib/mpi/mpiwrappers_c.c:76:5: error: conflicting types for ‘MPI_Send’
+ int MPI_Send(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:842:5: note: previous declaration of ‘MPI_Send’ was here
+ int MPI_Send(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:88:5: error: conflicting types for ‘MPI_Ssend’
+ int MPI_Ssend(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:849:5: note: previous declaration of ‘MPI_Ssend’ was here
+ int MPI_Ssend(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:100:5: error: conflicting types for ‘MPI_Rsend’
+ int MPI_Rsend(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:851:5: note: previous declaration of ‘MPI_Rsend’ was here
+ int MPI_Rsend(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:112:5: error: conflicting types for ‘MPI_Bsend’
+ int MPI_Bsend(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:847:5: note: previous declaration of ‘MPI_Bsend’ was here
+ int MPI_Bsend(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:124:5: error: conflicting types for ‘MPI_Isend’
+ int MPI_Isend(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm, MPI_Request * request)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:855:5: note: previous declaration of ‘MPI_Isend’ was here
+ int MPI_Isend(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:136:5: error: conflicting types for ‘MPI_Issend’
+ int MPI_Issend(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm, MPI_Request * request)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:859:5: note: previous declaration of ‘MPI_Issend’ was here
+ int MPI_Issend(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:148:5: error: conflicting types for ‘MPI_Irsend’
+ int MPI_Irsend(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm, MPI_Request * request)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:861:5: note: previous declaration of ‘MPI_Irsend’ was here
+ int MPI_Irsend(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:160:5: error: conflicting types for ‘MPI_Ibsend’
+ int MPI_Ibsend(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm, MPI_Request * request)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:857:5: note: previous declaration of ‘MPI_Ibsend’ was here
+ int MPI_Ibsend(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:172:5: error: conflicting types for ‘MPI_Send_init’
+ int MPI_Send_init(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm, MPI_Request * request)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:882:5: note: previous declaration of ‘MPI_Send_init’ was here
+ int MPI_Send_init(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:184:5: error: conflicting types for ‘MPI_Ssend_init’
+ int MPI_Ssend_init(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm, MPI_Request * request)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:886:5: note: previous declaration of ‘MPI_Ssend_init’ was here
+ int MPI_Ssend_init(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:196:5: error: conflicting types for ‘MPI_Rsend_init’
+ int MPI_Rsend_init(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm, MPI_Request * request)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:888:5: note: previous declaration of ‘MPI_Rsend_init’ was here
+ int MPI_Rsend_init(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:208:5: error: conflicting types for ‘MPI_Bsend_init’
+ int MPI_Bsend_init(APMPICONST void * buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm, MPI_Request * request)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:884:5: note: previous declaration of ‘MPI_Bsend_init’ was here
+ int MPI_Bsend_init(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:272:5: error: conflicting types for ‘MPI_Sendrecv’
+ int MPI_Sendrecv(APMPICONST void * sendbuf, int sendcount, MPI_Datatype sendtype, int dest, int sendtag, void * recvbuf, int recvcount, MPI_Datatype recvtype, int source, int recvtag, MPI_Comm comm, MPI_Status * status)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:894:5: note: previous declaration of ‘MPI_Sendrecv’ was here
+ int MPI_Sendrecv(const void *sendbuf, int sendcount, MPI_Datatype sendtype, int dest,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:536:5: error: conflicting types for ‘MPI_Gather’
+ int MPI_Gather(APMPICONST void * sendbuf, int sendcount, MPI_Datatype sendtype, void * recvbuf, int recvcount, MPI_Datatype recvtype, int root, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:931:5: note: previous declaration of ‘MPI_Gather’ was here
+ int MPI_Gather(const void *sendbuf, int sendcount, MPI_Datatype sendtype, void *recvbuf,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:564:5: error: conflicting types for ‘MPI_Gatherv’
+ int MPI_Gatherv(APMPICONST void * sendbuf, int sendcount, MPI_Datatype sendtype, void * recvbuf, APMPICONST int * recvcounts, APMPICONST int * displs, MPI_Datatype recvtype, int root, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:934:5: note: previous declaration of ‘MPI_Gatherv’ was here
+ int MPI_Gatherv(const void *sendbuf, int sendcount, MPI_Datatype sendtype, void *recvbuf,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:593:5: error: conflicting types for ‘MPI_Scatter’
+ int MPI_Scatter(APMPICONST void * sendbuf, int sendcount, MPI_Datatype sendtype, void * recvbuf, int recvcount, MPI_Datatype recvtype, int root, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:938:5: note: previous declaration of ‘MPI_Scatter’ was here
+ int MPI_Scatter(const void *sendbuf, int sendcount, MPI_Datatype sendtype, void *recvbuf,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:622:5: error: conflicting types for ‘MPI_Scatterv’
+ int MPI_Scatterv(APMPICONST void * sendbuf, APMPICONST int * sendcounts, APMPICONST int * displs, MPI_Datatype sendtype, void * recvbuf, int recvcount, MPI_Datatype recvtype, int root, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:941:5: note: previous declaration of ‘MPI_Scatterv’ was here
+ int MPI_Scatterv(const void *sendbuf, const int *sendcounts, const int *displs,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:645:5: error: conflicting types for ‘MPI_Scan’
+ int MPI_Scan(APMPICONST void * sendbuf, void * recvbuf, int count, MPI_Datatype datatype, MPI_Op op, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:975:5: note: previous declaration of ‘MPI_Scan’ was here
+ int MPI_Scan(const void *sendbuf, void *recvbuf, int count, MPI_Datatype datatype, MPI_Op op,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:659:5: error: conflicting types for ‘MPI_Allgather’
+ int MPI_Allgather(APMPICONST void * sendbuf, int sendcount, MPI_Datatype sendtype, void * recvbuf, int recvcount, MPI_Datatype recvtype, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:945:5: note: previous declaration of ‘MPI_Allgather’ was here
+ int MPI_Allgather(const void *sendbuf, int sendcount, MPI_Datatype sendtype, void *recvbuf,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:678:5: error: conflicting types for ‘MPI_Allgatherv’
+ int MPI_Allgatherv(APMPICONST void * sendbuf, int sendcount, MPI_Datatype sendtype, void * recvbuf, APMPICONST int * recvcounts, APMPICONST int * displs, MPI_Datatype recvtype, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:948:5: note: previous declaration of ‘MPI_Allgatherv’ was here
+ int MPI_Allgatherv(const void *sendbuf, int sendcount, MPI_Datatype sendtype, void *recvbuf,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:698:5: error: conflicting types for ‘MPI_Reduce’
+ int MPI_Reduce(APMPICONST void * sendbuf, void * recvbuf, int count, MPI_Datatype datatype, MPI_Op op, int root, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:964:5: note: previous declaration of ‘MPI_Reduce’ was here
+ int MPI_Reduce(const void *sendbuf, void *recvbuf, int count, MPI_Datatype datatype,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:717:5: error: conflicting types for ‘MPI_Allreduce’
+ int MPI_Allreduce(APMPICONST void * sendbuf, void * recvbuf, int count, MPI_Datatype datatype, MPI_Op op, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:969:5: note: previous declaration of ‘MPI_Allreduce’ was here
+ int MPI_Allreduce(const void *sendbuf, void *recvbuf, int count, MPI_Datatype datatype,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:728:5: error: conflicting types for ‘MPI_Reduce_scatter’
+ int MPI_Reduce_scatter(APMPICONST void * sendbuf, void * recvbuf, APMPICONST int recvcounts[], MPI_Datatype datatype, MPI_Op op, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:972:5: note: previous declaration of ‘MPI_Reduce_scatter’ was here
+ int MPI_Reduce_scatter(const void *sendbuf, void *recvbuf, const int recvcounts[],
+     ^
+../src/lib/mpi/mpiwrappers_c.c:752:5: error: conflicting types for ‘MPI_Alltoall’
+ int MPI_Alltoall(APMPICONST void * sendbuf, int sendcount, MPI_Datatype sendtype, void * recvbuf, int recvcount, MPI_Datatype recvtype, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:951:5: note: previous declaration of ‘MPI_Alltoall’ was here
+ int MPI_Alltoall(const void *sendbuf, int sendcount, MPI_Datatype sendtype, void *recvbuf,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:773:5: error: conflicting types for ‘MPI_Alltoallv’
+ int MPI_Alltoallv(APMPICONST void * sendbuf, APMPICONST int * sendcounts, APMPICONST int * sdispls, MPI_Datatype sendtype, void * recvbuf, APMPICONST int * recvcounts, APMPICONST int * rdispls, MPI_Datatype recvtype, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:954:5: note: previous declaration of ‘MPI_Alltoallv’ was here
+ int MPI_Alltoallv(const void *sendbuf, const int *sendcounts, const int *sdispls,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:798:5: error: conflicting types for ‘MPI_Alltoallw’
+ int MPI_Alltoallw(APMPICONST void * sendbuf, APMPICONST int sendcounts[], APMPICONST int sdispls[], APMPICONST MPI_Datatype  sendtypes[], void * recvbuf, APMPICONST int recvcounts[], APMPICONST int rdispls[], APMPICONST MPI_Datatype recvtypes[], MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:958:5: note: previous declaration of ‘MPI_Alltoallw’ was here
+ int MPI_Alltoallw(const void *sendbuf, const int sendcounts[], const int sdispls[],
+     ^
+../src/lib/mpi/mpiwrappers_c.c:818:5: error: conflicting types for ‘MPI_Exscan’
+ int MPI_Exscan(APMPICONST void * sendbuf, void * recvbuf, int count, MPI_Datatype datatype, MPI_Op op, MPI_Comm comm)
+     ^
+In file included from ../src/lib/mpi/ap_mpi.h:1:0,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:961:5: note: previous declaration of ‘MPI_Exscan’ was here
+ int MPI_Exscan(const void *sendbuf, void *recvbuf, int count, MPI_Datatype datatype,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:842:5: error: conflicting types for ‘MPI_File_delete’
+ int MPI_File_delete(APMPICONST char * filename, MPI_Info info)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:121:5: note: previous declaration of ‘MPI_File_delete’ was here
+ int MPI_File_delete(const char *filename, MPI_Info info);
+     ^
+../src/lib/mpi/mpiwrappers_c.c:885:5: error: conflicting types for ‘MPI_File_iwrite’
+ int MPI_File_iwrite(MPI_File fh, APMPICONST void * buf, int count, MPI_Datatype datatype, MPI_Request * request)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:174:5: note: previous declaration of ‘MPI_File_iwrite’ was here
+ int MPI_File_iwrite(MPI_File fh, const void *buf, int count, MPI_Datatype datatype,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:896:5: error: conflicting types for ‘MPI_File_iwrite_at’
+ int MPI_File_iwrite_at(MPI_File fh, MPI_Offset offset, APMPICONST void * buf, int count, MPI_Datatype datatype, MPI_Request * request)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:154:5: note: previous declaration of ‘MPI_File_iwrite_at’ was here
+ int MPI_File_iwrite_at(MPI_File fh, MPI_Offset offset, const void *buf, int count,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:907:5: error: conflicting types for ‘MPI_File_iwrite_shared’
+ int MPI_File_iwrite_shared(MPI_File fh, APMPICONST void * buf, int count, MPI_Datatype datatype, MPI_Request * request)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:188:5: note: previous declaration of ‘MPI_File_iwrite_shared’ was here
+ int MPI_File_iwrite_shared(MPI_File fh, const void *buf, int count, MPI_Datatype datatype,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:918:5: error: conflicting types for ‘MPI_File_open’
+ int MPI_File_open(MPI_Comm comm, APMPICONST char * filename, int amode, MPI_Info info, MPI_File * fh)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:119:5: note: previous declaration of ‘MPI_File_open’ was here
+ int MPI_File_open(MPI_Comm comm, const char *filename, int amode, MPI_Info info, MPI_File *fh);
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1091:5: error: conflicting types for ‘MPI_File_set_view’
+ int MPI_File_set_view(MPI_File fh, MPI_Offset disp, MPI_Datatype etype, MPI_Datatype filetype, APMPICONST char * datarep, MPI_Info info)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:131:5: note: previous declaration of ‘MPI_File_set_view’ was here
+ int MPI_File_set_view(MPI_File fh, MPI_Offset disp, MPI_Datatype etype, MPI_Datatype filetype,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1112:5: error: conflicting types for ‘MPI_File_write’
+ int MPI_File_write(MPI_File fh, APMPICONST void * buf, int count, MPI_Datatype datatype, MPI_Status * status)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:163:5: note: previous declaration of ‘MPI_File_write’ was here
+ int MPI_File_write(MPI_File fh, const void *buf, int count, MPI_Datatype datatype,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1124:5: error: conflicting types for ‘MPI_File_write_all’
+ int MPI_File_write_all(MPI_File fh, APMPICONST void * buf, int count, MPI_Datatype datatype, MPI_Status * status)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:165:5: note: previous declaration of ‘MPI_File_write_all’ was here
+ int MPI_File_write_all(MPI_File fh, const void *buf, int count, MPI_Datatype datatype,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1135:5: error: conflicting types for ‘MPI_File_write_all_begin’
+ int MPI_File_write_all_begin(MPI_File fh, APMPICONST void * buf, int count, MPI_Datatype datatype)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:207:5: note: previous declaration of ‘MPI_File_write_all_begin’ was here
+ int MPI_File_write_all_begin(MPI_File fh, const void *buf, int count, MPI_Datatype datatype)
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1146:5: error: conflicting types for ‘MPI_File_write_all_end’
+ int MPI_File_write_all_end(MPI_File fh, APMPICONST void * buf, MPI_Status * status)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:209:5: note: previous declaration of ‘MPI_File_write_all_end’ was here
+ int MPI_File_write_all_end(MPI_File fh, const void *buf, MPI_Status *status);
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1156:5: error: conflicting types for ‘MPI_File_write_at’
+ int MPI_File_write_at(MPI_File fh, MPI_Offset offset, APMPICONST void * buf, int count, MPI_Datatype datatype, MPI_Status * status)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:142:5: note: previous declaration of ‘MPI_File_write_at’ was here
+ int MPI_File_write_at(MPI_File fh, MPI_Offset offset, const void * buf, int count,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1168:5: error: conflicting types for ‘MPI_File_write_at_all’
+ int MPI_File_write_at_all(MPI_File fh, MPI_Offset offset, APMPICONST void * buf, int count, MPI_Datatype datatype, MPI_Status * status)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:145:5: note: previous declaration of ‘MPI_File_write_at_all’ was here
+ int MPI_File_write_at_all(MPI_File fh, MPI_Offset offset, const void *buf, int count,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1179:5: error: conflicting types for ‘MPI_File_write_at_all_begin’
+ int MPI_File_write_at_all_begin(MPI_File fh, MPI_Offset offset, APMPICONST void * buf, int count, MPI_Datatype datatype)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:201:5: note: previous declaration of ‘MPI_File_write_at_all_begin’ was here
+ int MPI_File_write_at_all_begin(MPI_File fh, MPI_Offset offset, const void *buf, int count,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1190:5: error: conflicting types for ‘MPI_File_write_at_all_end’
+ int MPI_File_write_at_all_end(MPI_File fh, APMPICONST void * buf, MPI_Status * status)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:203:5: note: previous declaration of ‘MPI_File_write_at_all_end’ was here
+ int MPI_File_write_at_all_end(MPI_File fh, const void *buf, MPI_Status *status);
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1200:5: error: conflicting types for ‘MPI_File_write_ordered’
+ int MPI_File_write_ordered(MPI_File fh, APMPICONST void * buf, int count, MPI_Datatype datatype, MPI_Status * status)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:192:5: note: previous declaration of ‘MPI_File_write_ordered’ was here
+ int MPI_File_write_ordered(MPI_File fh, const void *buf, int count, MPI_Datatype datatype,
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1211:5: error: conflicting types for ‘MPI_File_write_ordered_begin’
+ int MPI_File_write_ordered_begin(MPI_File fh, APMPICONST void * buf, int count, MPI_Datatype datatype)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:213:5: note: previous declaration of ‘MPI_File_write_ordered_begin’ was here
+ int MPI_File_write_ordered_begin(MPI_File fh, const void *buf, int count, MPI_Datatype datatype)
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1222:5: error: conflicting types for ‘MPI_File_write_ordered_end’
+ int MPI_File_write_ordered_end(MPI_File fh, APMPICONST void * buf, MPI_Status * status)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:215:5: note: previous declaration of ‘MPI_File_write_ordered_end’ was here
+ int MPI_File_write_ordered_end(MPI_File fh, const void *buf, MPI_Status *status);
+     ^
+../src/lib/mpi/mpiwrappers_c.c:1232:5: error: conflicting types for ‘MPI_File_write_shared’
+ int MPI_File_write_shared(MPI_File fh, APMPICONST void * buf, int count, MPI_Datatype datatype, MPI_Status * status)
+     ^
+In file included from /home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpi.h:2121:0,
+                 from ../src/lib/mpi/ap_mpi.h:1,
+                 from ../src/lib/mpi/mpiwrappers_c.c:7:
+/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include/mpio.h:184:5: note: previous declaration of ‘MPI_File_write_shared’ was here
+ int MPI_File_write_shared(MPI_File fh, const void *buf, int count, MPI_Datatype datatype,
+     ^
+make: *** [mpiwrappers_c.o] Error 1

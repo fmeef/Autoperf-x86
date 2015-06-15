@@ -7,7 +7,13 @@
 #include "mpi/ap_mpi.h"
 #include "time/ap_time.h"
 
+
+#if MPI_VERSION > 2 
+#define APMPICONST const
+#else
 #define APMPICONST
+#endif
+
 
 #define TIME(FUNC) \
           ap_cycle_t TB1, TB2;\
