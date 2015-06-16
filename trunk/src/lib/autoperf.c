@@ -177,7 +177,6 @@ void AP_Init() {
 
   PMPI_Barrier(MPI_COMM_WORLD);
   printf("[DEBUG] finished PMPI_Barrier\n");
-  sleep(3);
   AP_HPM_Start();
   printf("[DEBUG] finished AP_HPM_Start()\n");
   AP_Proc_Start();
