@@ -2,14 +2,6 @@
 #include "autoperf.h"
 #include "hpm/ap_hpm.h"
 
-
-static unsigned int pEventList[PAPI_NUM_EVENTS] =   {PAPI_L1_DCM,
-						      PAPI_L1_ICM,
-						      PAPI_L2_DCM,
-						      PAPI_L2_ICM,
-						      PAPI_TOT_CYC,
-						      PAPI_BR_MSP};
-
 static int disabled = 0;
 
 static ap_cycle_t startCycle, stopCycle, elapsedCycles;
@@ -72,8 +64,11 @@ int AP_HPM_Start() {
   /*-------------------------------*/
   /* start counters                */
   /*-------------------------------*/
-   if(PAPI_start_counters(pEventList, PAPI_NUM_EVENTS) < PAPI_OK) {
+
+  int retval;
+  if((retval = PAPI_start_counters(pEventList, PAPI_NUM_EVENTS)) < PAPI_OK) {
     disabled=1;
+    printf("Starting counters failed: %s\n", PAPI_strerror(retval));
     return 1;
   }
 
@@ -102,9 +97,10 @@ int AP_HPM_Stop() {
   /*------------------------------*/
   /* stop counters                */
   /*------------------------------*/
-
-  if(PAPI_stop_counters(results, PAPI_NUM_EVENTS) < PAPI_OK) {
+  int retval;
+  if((retval = PAPI_stop_counters(results, PAPI_NUM_EVENTS)) < PAPI_OK) {
     disabled = 1;
+    printf("Stopping counters failed: %s\n", PAPI_strerror(retval));
     return 1;
   }
   return 0;
@@ -169,8 +165,10 @@ int AP_HPM_GetData(ap_hpmData_t *data) {
 const char* AP_HPM_GetEventName(int id) {
 
   PAPI_event_info_t evt;
+  printf("[DEBUG] event code (for file writing) is %d\n",id);
+  printf("we are looking for something close to %d\n", PAPI_L2_DCM);
   PAPI_get_event_info(id, &evt);
-  const char *name = evt.name;
+  const char *name = evt.short_descr;
 
 
   return name;
