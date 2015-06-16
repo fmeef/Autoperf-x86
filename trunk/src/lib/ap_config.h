@@ -10,7 +10,7 @@
 
 // configure output
 //#define OUTPUT_SYS_DIR "/gpfs/mira-fs0/logs/autoperf"
-#define OUTPUT_SYS_DIR "/home/gnu3ra/argonne/autoperf/output"
+#define OUTPUT_SYS_DIR ".."
 #define OUTPUT_LOCAL_DIR "."
 
 // configure system component

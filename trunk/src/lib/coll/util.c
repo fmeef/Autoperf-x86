@@ -23,12 +23,12 @@ FILE * AP_openOutputFile(char *dirRoot, int ymdSubDir, uint64_t jobid, int myRan
     struct tm *timeInfo = gmtime(&t);
 
     if (myRank == NO_RANK_IN_NAME ) {
-      sprintf(filename,"%s/%d/%d/%d/ap.%llu", dirRoot, timeInfo->tm_year+1900, timeInfo->tm_mon+1,
-              timeInfo->tm_mday, jobid);
+      //sprintf(filename,"%s/%d/%d/%d/ap.%llu", dirRoot, timeInfo->tm_year+1900, timeInfo->tm_mon+1,timeInfo->tm_mday, jobid);
+        sprintf(filename,"%s/ap.%llu", dirRoot,jobid);
     } else {
-      sprintf(filename,"%s/%d/%d/%d/ap.%llu.%d", dirRoot, timeInfo->tm_year+1900, timeInfo->tm_mon+1,
-              timeInfo->tm_mday, jobid, myRank);
-    }
+    //sprintf(filename,"%s/%d/%d/%d/ap.%llu.%d", dirRoot, timeInfo->tm_year+1900, timeInfo->tm_mon+1,timeInfo->tm_mday, jobid, myRank);
+      sprintf(filename,"%s/ap.%llu.%d", dirRoot,jobid, myRank);
+     }
   }
 
   /*--------------------------------------------*/
