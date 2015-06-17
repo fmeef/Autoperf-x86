@@ -29,6 +29,18 @@ static long long results[PAPI_NUM_EVENTS];
 
 int AP_HPM_Init(int disabledArg) {
 
+  /*--------------------------------------------------*/
+  /* Debug for PAPI event decoding                    */
+  /*--------------------------------------------------*/
+
+  int i;
+  for(i=0;i<PAPI_NUM_EVENTS;i++) {
+    printf("[DEBUG] original event code: %d\n",pEventList[i]);
+  }
+  
+
+
+  
   /*---------------------------------------------------*/
   /* return immediately if not logging data            */
   /*---------------------------------------------------*/
@@ -151,9 +163,11 @@ int AP_HPM_GetData(ap_hpmData_t *data) {
   data->stopCycle = stopCycle;
   data->elapsedCycles = elapsedCycles;
   data->elapsedTime = elapsedTime;
-
-  memcpy(data->ids, pEventList, PAPI_NUM_EVENTS);
-  memcpy(data->counts, results, PAPI_NUM_EVENTS);
+  int x;
+  for(x=0;x<PAPI_NUM_EVENTS;x++) {
+    data->ids[x] = pEventList[x];
+    data->counts[x] = results[x];
+  }
   
   return 0;
 }
@@ -163,12 +177,12 @@ int AP_HPM_GetData(ap_hpmData_t *data) {
 /* Return event label for id, null if bad id                     */
 /*===============================================================*/
 const char* AP_HPM_GetEventName(int id) {
-
-  PAPI_event_info_t evt;
-  printf("[DEBUG] event code (for file writing) is %d\n",id);
-  printf("we are looking for something close to %d\n", PAPI_L2_DCM);
-  PAPI_get_event_info(id, &evt);
-  const char *name = evt.short_descr;
+  const char *name;
+  int retval;
+  if((retval =  PAPI_event_code_to_name(id, name)) < PAPI_OK) {
+    printf("[DEBUG] %s Failed to convert event code %d to ID\n",PAPI_strerror(retval), id);
+    return "ERR";
+  }
 
 
   return name;
