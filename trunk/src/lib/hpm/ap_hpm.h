@@ -33,4 +33,4 @@ int AP_HPM_Start(void);
 int AP_HPM_Stop(void);
 int AP_HPM_Finalize(void);
 int AP_HPM_GetData(ap_hpmData_t *);
-const char* AP_HPM_GetEventName(int );
+const char* AP_HPM_GetEventName(int);

@@ -36,8 +36,7 @@ int AP_HPM_Init(int disabledArg) {
   int i;
   for(i=0;i<PAPI_NUM_EVENTS;i++) {
     printf("[DEBUG] original event code: %d\n",pEventList[i]);
-  }
-  
+  } 
 
 
   
@@ -177,13 +176,27 @@ int AP_HPM_GetData(ap_hpmData_t *data) {
 /* Return event label for id, null if bad id                     */
 /*===============================================================*/
 const char* AP_HPM_GetEventName(int id) {
-  const char *name;
+  int ver = PAPI_library_init(PAPI_VER_CURRENT);
+  if(ver != PAPI_VER_CURRENT)
+    printf("LIBRARY INIT ERR\n");
+  char *name;
+
+
+  int code;
+  PAPI_event_name_to_code("PAPI_L2_DCM",code);
+  
+  printf("[DEBUG] what I am expecting for first PAPI_L2_DCM: %d\n",code);
+  char * res;
+  PAPI_event_code_to_name(code, res);
+  
+  printf("this is the same code converted back (should be valid event): %s", res);
   int retval;
   if((retval =  PAPI_event_code_to_name(id, name)) < PAPI_OK) {
     printf("[DEBUG] %s Failed to convert event code %d to ID\n",PAPI_strerror(retval), id);
     return "ERR";
   }
-
+  
+ 
 
   return name;
 }
