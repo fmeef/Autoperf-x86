@@ -5,7 +5,16 @@
 //#define  HPM_NUM_L2_EVENTS 2 //used to be 4
 //#define  HPM_NUM_NW_EVENTS 0 //used to be 2
 //#define  HPM_NUM_EVENTS (HPM_NUM_P_EVENTS+HPM_NUM_L2_EVENTS+HPM_NUM_NW_EVENTS)
-#define PAPI_NUM_EVENTS 6
+#define PAPI_NUM_EVENTS 4
+
+static int pEventList[PAPI_NUM_EVENTS] =   {
+               //PAPI_L1_DCM,
+						     //  PAPI_L1_ICM,
+						      PAPI_L2_DCM,
+						      PAPI_L2_ICM,
+						      PAPI_TOT_CYC,
+						      PAPI_BR_MSP};
+
 
 typedef struct {
   int disabled;
@@ -24,4 +33,4 @@ int AP_HPM_Start(void);
 int AP_HPM_Stop(void);
 int AP_HPM_Finalize(void);
 int AP_HPM_GetData(ap_hpmData_t *);
-const char* AP_HPM_GetEventName(int );
+const char* AP_HPM_GetEventName(int);

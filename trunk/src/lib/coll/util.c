@@ -190,6 +190,7 @@ int AP_writeHPMData(FILE *fh, char *prefix, ap_hpmData_t *data) {
 
     int i;
     for(i = 0; i < PAPI_NUM_EVENTS; i++) {
+      fprintf(fh, "DEBUG id = %d\n",data->ids[i]);
        fprintf(fh, "  %s%s = %llu\n", prefix, AP_HPM_GetEventName(data->ids[i]), data->counts[i]);
     }
 

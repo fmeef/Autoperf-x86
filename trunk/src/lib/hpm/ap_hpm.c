@@ -2,14 +2,6 @@
 #include "autoperf.h"
 #include "hpm/ap_hpm.h"
 
-
-static unsigned int pEventList[PAPI_NUM_EVENTS] =   {PAPI_L1_DCM,
-						      PAPI_L1_ICM,
-						      PAPI_L2_DCM,
-						      PAPI_L2_ICM,
-						      PAPI_TOT_CYC,
-						      PAPI_BR_MSP};
-
 static int disabled = 0;
 
 static ap_cycle_t startCycle, stopCycle, elapsedCycles;
@@ -37,6 +29,17 @@ static long long results[PAPI_NUM_EVENTS];
 
 int AP_HPM_Init(int disabledArg) {
 
+  /*--------------------------------------------------*/
+  /* Debug for PAPI event decoding                    */
+  /*--------------------------------------------------*/
+
+  int i;
+  for(i=0;i<PAPI_NUM_EVENTS;i++) {
+    printf("[DEBUG] original event code: %d\n",pEventList[i]);
+  } 
+
+
+  
   /*---------------------------------------------------*/
   /* return immediately if not logging data            */
   /*---------------------------------------------------*/
@@ -72,8 +75,11 @@ int AP_HPM_Start() {
   /*-------------------------------*/
   /* start counters                */
   /*-------------------------------*/
-   if(PAPI_start_counters(pEventList, PAPI_NUM_EVENTS) < PAPI_OK) {
+
+  int retval;
+  if((retval = PAPI_start_counters(pEventList, PAPI_NUM_EVENTS)) < PAPI_OK) {
     disabled=1;
+    printf("Starting counters failed: %s\n", PAPI_strerror(retval));
     return 1;
   }
 
@@ -102,9 +108,10 @@ int AP_HPM_Stop() {
   /*------------------------------*/
   /* stop counters                */
   /*------------------------------*/
-
-  if(PAPI_stop_counters(results, PAPI_NUM_EVENTS) < PAPI_OK) {
+  int retval;
+  if((retval = PAPI_stop_counters(results, PAPI_NUM_EVENTS)) < PAPI_OK) {
     disabled = 1;
+    printf("Stopping counters failed: %s\n", PAPI_strerror(retval));
     return 1;
   }
   return 0;
@@ -155,9 +162,11 @@ int AP_HPM_GetData(ap_hpmData_t *data) {
   data->stopCycle = stopCycle;
   data->elapsedCycles = elapsedCycles;
   data->elapsedTime = elapsedTime;
-
-  memcpy(data->ids, pEventList, PAPI_NUM_EVENTS);
-  memcpy(data->counts, results, PAPI_NUM_EVENTS);
+  int x;
+  for(x=0;x<PAPI_NUM_EVENTS;x++) {
+    data->ids[x] = pEventList[x];
+    data->counts[x] = results[x];
+  }
   
   return 0;
 }
@@ -167,11 +176,27 @@ int AP_HPM_GetData(ap_hpmData_t *data) {
 /* Return event label for id, null if bad id                     */
 /*===============================================================*/
 const char* AP_HPM_GetEventName(int id) {
+  int ver = PAPI_library_init(PAPI_VER_CURRENT);
+  if(ver != PAPI_VER_CURRENT)
+    printf("LIBRARY INIT ERR\n");
+  char *name;
 
-  PAPI_event_info_t evt;
-  PAPI_get_event_info(id, &evt);
-  const char *name = evt.name;
 
+  int code;
+  PAPI_event_name_to_code("PAPI_L2_DCM",code);
+  
+  printf("[DEBUG] what I am expecting for first PAPI_L2_DCM: %d\n",code);
+  char * res;
+  PAPI_event_code_to_name(code, res);
+  
+  printf("this is the same code converted back (should be valid event): %s", res);
+  int retval;
+  if((retval =  PAPI_event_code_to_name(id, name)) < PAPI_OK) {
+    printf("[DEBUG] %s Failed to convert event code %d to ID\n",PAPI_strerror(retval), id);
+    return "ERR";
+  }
+  
+ 
 
   return name;
 }
