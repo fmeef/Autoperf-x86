@@ -7,8 +7,8 @@
 #include <mpi/ap_mpi.h>
 
 #define NO_RANK_IN_NAME -1
-#define NO_APPEND_PATH 0
-#define APPEND_PATH 1
+#define NO_APPEND_PATH 1
+#define APPEND_PATH 0
 
 FILE * AP_openOutputFile(char *, int, uint64_t, int, int);
 int AP_writeSettings(FILE *, ap_settings_t *);

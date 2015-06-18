@@ -30,24 +30,24 @@ Proc:
   zero_disabled = 0
   zero_startCycle = 0
   zero_stopCycle = 0
-  zero_elapsedCycles = 9340
+  zero_elapsedCycles = 7324
   zero_elapsedTime = 0.000000
   zero_jobId = 0
   zero_numProcessesOnNode = 0
-  zero_processHWThreads = 23333
+  zero_processHWThreads = 543333
   zero_heapMaxUsed = 0
 
 HPM:
   zero_version = 1
   zero_disabled = 0
   zero_startCycle = 0
-  zero_stopCycle = 4526133911798
-  zero_elapsedCycles = 4526133911798
-  zero_elapsedTime = 2828.833695
-  zero_PAPI_L2_DCM = 230
-  zero_PAPI_L2_ICM = 382
-  zero_PAPI_TOT_CYC = 31618
-  zero_PAPI_BR_MSP = 109
+  zero_stopCycle = 20818324993372
+  zero_elapsedCycles = 20818324993372
+  zero_elapsedTime = 13011.453121
+  zero_PAPI_L2_DCM = 5085
+  zero_PAPI_L2_ICM = 2376
+  zero_PAPI_TOT_CYC = 70583873
+  zero_PAPI_BR_MSP = 56847
 
 MPI:
   zero_version = 1
@@ -57,11 +57,11 @@ MPI:
   zero_stdMpiTime = 0.000000
   zero_mpiIoTime = 0.000000
   zero_MPI_Comm_size_callCount = 0
-  zero_MPI_Comm_size_totalCycles = 3
+  zero_MPI_Comm_size_totalCycles = 22
   zero_MPI_Comm_size_totalBytes = 0.000000
-  zero_MPI_Comm_size_totalTime = 0.000002
+  zero_MPI_Comm_size_totalTime = 0.000006
   zero_MPI_Comm_rank_callCount = 1
-  zero_MPI_Comm_rank_totalCycles = 1982
+  zero_MPI_Comm_rank_totalCycles = 1276
   zero_MPI_Comm_rank_totalBytes = 0.000000
   zero_MPI_Comm_rank_totalTime = 0.000001
   zero_MPI_Send_callCount = 0
@@ -416,24 +416,24 @@ Proc:
   min_disabled = 0
   min_startCycle = 0
   min_stopCycle = 0
-  min_elapsedCycles = 9340
+  min_elapsedCycles = 7324
   min_elapsedTime = 0.000000
   min_jobId = 0
   min_numProcessesOnNode = 0
-  min_processHWThreads = 23333
+  min_processHWThreads = 543333
   min_heapMaxUsed = 0
 
 HPM:
   min_version = 1
   min_disabled = 0
   min_startCycle = 0
-  min_stopCycle = 4526133911798
-  min_elapsedCycles = 4526133911798
-  min_elapsedTime = 2828.833695
-  min_PAPI_L2_DCM = 230
-  min_PAPI_L2_ICM = 382
-  min_PAPI_TOT_CYC = 31618
-  min_PAPI_BR_MSP = 109
+  min_stopCycle = 20818324993372
+  min_elapsedCycles = 20818324993372
+  min_elapsedTime = 13011.453121
+  min_PAPI_L2_DCM = 5085
+  min_PAPI_L2_ICM = 2376
+  min_PAPI_TOT_CYC = 70583873
+  min_PAPI_BR_MSP = 56847
 
 MPI:
   min_version = 1
@@ -443,11 +443,11 @@ MPI:
   min_stdMpiTime = 0.000000
   min_mpiIoTime = 0.000000
   min_MPI_Comm_size_callCount = 0
-  min_MPI_Comm_size_totalCycles = 3
+  min_MPI_Comm_size_totalCycles = 22
   min_MPI_Comm_size_totalBytes = 0.000000
-  min_MPI_Comm_size_totalTime = 0.000002
+  min_MPI_Comm_size_totalTime = 0.000006
   min_MPI_Comm_rank_callCount = 1
-  min_MPI_Comm_rank_totalCycles = 1982
+  min_MPI_Comm_rank_totalCycles = 1276
   min_MPI_Comm_rank_totalBytes = 0.000000
   min_MPI_Comm_rank_totalTime = 0.000001
   min_MPI_Send_callCount = 0
@@ -802,24 +802,24 @@ Proc:
   max_disabled = 0
   max_startCycle = 0
   max_stopCycle = 0
-  max_elapsedCycles = 9340
+  max_elapsedCycles = 7324
   max_elapsedTime = 0.000000
   max_jobId = 0
   max_numProcessesOnNode = 0
-  max_processHWThreads = 23333
+  max_processHWThreads = 543333
   max_heapMaxUsed = 0
 
 HPM:
   max_version = 1
   max_disabled = 0
   max_startCycle = 0
-  max_stopCycle = 4526133911798
-  max_elapsedCycles = 4526133911798
-  max_elapsedTime = 2828.833695
-  max_PAPI_L2_DCM = 230
-  max_PAPI_L2_ICM = 382
-  max_PAPI_TOT_CYC = 31618
-  max_PAPI_BR_MSP = 109
+  max_stopCycle = 20818324993372
+  max_elapsedCycles = 20818324993372
+  max_elapsedTime = 13011.453121
+  max_PAPI_L2_DCM = 5085
+  max_PAPI_L2_ICM = 2376
+  max_PAPI_TOT_CYC = 70583873
+  max_PAPI_BR_MSP = 56847
 
 MPI:
   max_version = 1
@@ -829,11 +829,11 @@ MPI:
   max_stdMpiTime = 0.000000
   max_mpiIoTime = 0.000000
   max_MPI_Comm_size_callCount = 0
-  max_MPI_Comm_size_totalCycles = 3
+  max_MPI_Comm_size_totalCycles = 22
   max_MPI_Comm_size_totalBytes = 0.000000
-  max_MPI_Comm_size_totalTime = 0.000002
+  max_MPI_Comm_size_totalTime = 0.000006
   max_MPI_Comm_rank_callCount = 1
-  max_MPI_Comm_rank_totalCycles = 1982
+  max_MPI_Comm_rank_totalCycles = 1276
   max_MPI_Comm_rank_totalBytes = 0.000000
   max_MPI_Comm_rank_totalTime = 0.000001
   max_MPI_Send_callCount = 0
@@ -1188,24 +1188,24 @@ Proc:
   av_disabled = 0
   av_startCycle = 0
   av_stopCycle = 0
-  av_elapsedCycles = 9340
+  av_elapsedCycles = 7324
   av_elapsedTime = 0.000000
   av_jobId = 0
   av_numProcessesOnNode = 0
-  av_processHWThreads = 23333
+  av_processHWThreads = 543333
   av_heapMaxUsed = 0
 
 HPM:
   av_version = 1
   av_disabled = 0
   av_startCycle = 0
-  av_stopCycle = 4526133911798
-  av_elapsedCycles = 4526133911798
-  av_elapsedTime = 2828.833695
-  av_PAPI_L2_DCM = 230
-  av_PAPI_L2_ICM = 382
-  av_PAPI_TOT_CYC = 31618
-  av_PAPI_BR_MSP = 109
+  av_stopCycle = 20818324993372
+  av_elapsedCycles = 20818324993372
+  av_elapsedTime = 13011.453121
+  av_PAPI_L2_DCM = 5085
+  av_PAPI_L2_ICM = 2376
+  av_PAPI_TOT_CYC = 70583873
+  av_PAPI_BR_MSP = 56847
 
 MPI:
   av_version = 1
@@ -1215,11 +1215,11 @@ MPI:
   av_stdMpiTime = 0.000000
   av_mpiIoTime = 0.000000
   av_MPI_Comm_size_callCount = 0
-  av_MPI_Comm_size_totalCycles = 3
+  av_MPI_Comm_size_totalCycles = 22
   av_MPI_Comm_size_totalBytes = 0.000000
-  av_MPI_Comm_size_totalTime = 0.000002
+  av_MPI_Comm_size_totalTime = 0.000006
   av_MPI_Comm_rank_callCount = 1
-  av_MPI_Comm_rank_totalCycles = 1982
+  av_MPI_Comm_rank_totalCycles = 1276
   av_MPI_Comm_rank_totalBytes = 0.000000
   av_MPI_Comm_rank_totalTime = 0.000001
   av_MPI_Send_callCount = 0
