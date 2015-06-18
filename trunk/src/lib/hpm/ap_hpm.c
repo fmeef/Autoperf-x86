@@ -28,17 +28,6 @@ static long long results[PAPI_NUM_EVENTS];
 /*=================================================================*/
 
 int AP_HPM_Init(int disabledArg) {
-
-  /*--------------------------------------------------*/
-  /* Debug for PAPI event decoding                    */
-  /*--------------------------------------------------*/
-
-  int i;
-  for(i=0;i<PAPI_NUM_EVENTS;i++) {
-    printf("[DEBUG] original event code: %d\n",pEventList[i]);
-  } 
-
-
   
   /*---------------------------------------------------*/
   /* return immediately if not logging data            */
@@ -183,7 +172,7 @@ void AP_HPM_GetEventName(int id, char * nameout) {
   char name[PAPI_MAX_STR_LEN];
   memcpy(name , nameout,PAPI_MAX_STR_LEN *sizeof( char));
   if((retval =  PAPI_event_code_to_name(id, name)) < PAPI_OK) {
-    printf("[DEBUG] %s Failed to convert event code %u to ID\n",PAPI_strerror(retval), id);
+    printf("%s: Failed to convert event code %u to ID\n",PAPI_strerror(retval), id);
     return "ERR";
   }
 

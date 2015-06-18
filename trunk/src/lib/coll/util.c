@@ -192,8 +192,6 @@ int AP_writeHPMData(FILE *fh, char *prefix, ap_hpmData_t *data) {
     for(i = 0; i < PAPI_NUM_EVENTS; i++) {
       char * final = malloc(PAPI_MAX_STR_LEN * sizeof(char));
       AP_HPM_GetEventName(data->ids[i], final);
-      printf("[DEBUG] right before writing: %s\n",final);
-      fprintf(fh, "DEBUG id = %s\n",final);
        fprintf(fh, "  %s%s = %llu\n", prefix,final, data->counts[i]);
     }
 

@@ -30,28 +30,24 @@ Proc:
   zero_disabled = 0
   zero_startCycle = 0
   zero_stopCycle = 0
-  zero_elapsedCycles = 9352
+  zero_elapsedCycles = 9340
   zero_elapsedTime = 0.000000
   zero_jobId = 0
   zero_numProcessesOnNode = 0
-  zero_processHWThreads = 13333
+  zero_processHWThreads = 23333
   zero_heapMaxUsed = 0
 
 HPM:
   zero_version = 1
   zero_disabled = 0
   zero_startCycle = 0
-  zero_stopCycle = 32016001077532
-  zero_elapsedCycles = 32016001077532
-  zero_elapsedTime = 20010.000673
-DEBUG id = PAPI_L2_DCM
-  zero_PAPI_L2_DCM = 209
-DEBUG id = PAPI_L2_ICM
-  zero_PAPI_L2_ICM = 375
-DEBUG id = PAPI_TOT_CYC
-  zero_PAPI_TOT_CYC = 39113
-DEBUG id = PAPI_BR_MSP
-  zero_PAPI_BR_MSP = 87
+  zero_stopCycle = 4526133911798
+  zero_elapsedCycles = 4526133911798
+  zero_elapsedTime = 2828.833695
+  zero_PAPI_L2_DCM = 230
+  zero_PAPI_L2_ICM = 382
+  zero_PAPI_TOT_CYC = 31618
+  zero_PAPI_BR_MSP = 109
 
 MPI:
   zero_version = 1
@@ -65,7 +61,7 @@ MPI:
   zero_MPI_Comm_size_totalBytes = 0.000000
   zero_MPI_Comm_size_totalTime = 0.000002
   zero_MPI_Comm_rank_callCount = 1
-  zero_MPI_Comm_rank_totalCycles = 1858
+  zero_MPI_Comm_rank_totalCycles = 1982
   zero_MPI_Comm_rank_totalBytes = 0.000000
   zero_MPI_Comm_rank_totalTime = 0.000001
   zero_MPI_Send_callCount = 0
@@ -420,28 +416,24 @@ Proc:
   min_disabled = 0
   min_startCycle = 0
   min_stopCycle = 0
-  min_elapsedCycles = 9352
+  min_elapsedCycles = 9340
   min_elapsedTime = 0.000000
   min_jobId = 0
   min_numProcessesOnNode = 0
-  min_processHWThreads = 13333
+  min_processHWThreads = 23333
   min_heapMaxUsed = 0
 
 HPM:
   min_version = 1
   min_disabled = 0
   min_startCycle = 0
-  min_stopCycle = 32016001077532
-  min_elapsedCycles = 32016001077532
-  min_elapsedTime = 20010.000673
-DEBUG id = PAPI_L2_DCM
-  min_PAPI_L2_DCM = 209
-DEBUG id = PAPI_L2_ICM
-  min_PAPI_L2_ICM = 375
-DEBUG id = PAPI_TOT_CYC
-  min_PAPI_TOT_CYC = 39113
-DEBUG id = PAPI_BR_MSP
-  min_PAPI_BR_MSP = 87
+  min_stopCycle = 4526133911798
+  min_elapsedCycles = 4526133911798
+  min_elapsedTime = 2828.833695
+  min_PAPI_L2_DCM = 230
+  min_PAPI_L2_ICM = 382
+  min_PAPI_TOT_CYC = 31618
+  min_PAPI_BR_MSP = 109
 
 MPI:
   min_version = 1
@@ -455,7 +447,7 @@ MPI:
   min_MPI_Comm_size_totalBytes = 0.000000
   min_MPI_Comm_size_totalTime = 0.000002
   min_MPI_Comm_rank_callCount = 1
-  min_MPI_Comm_rank_totalCycles = 1858
+  min_MPI_Comm_rank_totalCycles = 1982
   min_MPI_Comm_rank_totalBytes = 0.000000
   min_MPI_Comm_rank_totalTime = 0.000001
   min_MPI_Send_callCount = 0
@@ -810,28 +802,24 @@ Proc:
   max_disabled = 0
   max_startCycle = 0
   max_stopCycle = 0
-  max_elapsedCycles = 9352
+  max_elapsedCycles = 9340
   max_elapsedTime = 0.000000
   max_jobId = 0
   max_numProcessesOnNode = 0
-  max_processHWThreads = 13333
+  max_processHWThreads = 23333
   max_heapMaxUsed = 0
 
 HPM:
   max_version = 1
   max_disabled = 0
   max_startCycle = 0
-  max_stopCycle = 32016001077532
-  max_elapsedCycles = 32016001077532
-  max_elapsedTime = 20010.000673
-DEBUG id = PAPI_L2_DCM
-  max_PAPI_L2_DCM = 209
-DEBUG id = PAPI_L2_ICM
-  max_PAPI_L2_ICM = 375
-DEBUG id = PAPI_TOT_CYC
-  max_PAPI_TOT_CYC = 39113
-DEBUG id = PAPI_BR_MSP
-  max_PAPI_BR_MSP = 87
+  max_stopCycle = 4526133911798
+  max_elapsedCycles = 4526133911798
+  max_elapsedTime = 2828.833695
+  max_PAPI_L2_DCM = 230
+  max_PAPI_L2_ICM = 382
+  max_PAPI_TOT_CYC = 31618
+  max_PAPI_BR_MSP = 109
 
 MPI:
   max_version = 1
@@ -845,7 +833,7 @@ MPI:
   max_MPI_Comm_size_totalBytes = 0.000000
   max_MPI_Comm_size_totalTime = 0.000002
   max_MPI_Comm_rank_callCount = 1
-  max_MPI_Comm_rank_totalCycles = 1858
+  max_MPI_Comm_rank_totalCycles = 1982
   max_MPI_Comm_rank_totalBytes = 0.000000
   max_MPI_Comm_rank_totalTime = 0.000001
   max_MPI_Send_callCount = 0
@@ -1200,28 +1188,24 @@ Proc:
   av_disabled = 0
   av_startCycle = 0
   av_stopCycle = 0
-  av_elapsedCycles = 9352
+  av_elapsedCycles = 9340
   av_elapsedTime = 0.000000
   av_jobId = 0
   av_numProcessesOnNode = 0
-  av_processHWThreads = 13333
+  av_processHWThreads = 23333
   av_heapMaxUsed = 0
 
 HPM:
   av_version = 1
   av_disabled = 0
   av_startCycle = 0
-  av_stopCycle = 32016001077532
-  av_elapsedCycles = 32016001077532
-  av_elapsedTime = 20010.000673
-DEBUG id = PAPI_L2_DCM
-  av_PAPI_L2_DCM = 209
-DEBUG id = PAPI_L2_ICM
-  av_PAPI_L2_ICM = 375
-DEBUG id = PAPI_TOT_CYC
-  av_PAPI_TOT_CYC = 39113
-DEBUG id = PAPI_BR_MSP
-  av_PAPI_BR_MSP = 87
+  av_stopCycle = 4526133911798
+  av_elapsedCycles = 4526133911798
+  av_elapsedTime = 2828.833695
+  av_PAPI_L2_DCM = 230
+  av_PAPI_L2_ICM = 382
+  av_PAPI_TOT_CYC = 31618
+  av_PAPI_BR_MSP = 109
 
 MPI:
   av_version = 1
@@ -1235,7 +1219,7 @@ MPI:
   av_MPI_Comm_size_totalBytes = 0.000000
   av_MPI_Comm_size_totalTime = 0.000002
   av_MPI_Comm_rank_callCount = 1
-  av_MPI_Comm_rank_totalCycles = 1858
+  av_MPI_Comm_rank_totalCycles = 1982
   av_MPI_Comm_rank_totalBytes = 0.000000
   av_MPI_Comm_rank_totalTime = 0.000001
   av_MPI_Send_callCount = 0
