@@ -1,6 +1,7 @@
 #include <autoperf.h>
 #include <mpi.h>
 #include <stdio.h>
+#include <unistd.h>
 
 int main(char ** argv, int argc) {
   MPI_Init(NULL,NULL);
@@ -22,8 +23,6 @@ int main(char ** argv, int argc) {
       }
 
   */
-
-  printf("Hello world. \n");
   
   MPI_Finalize();
   

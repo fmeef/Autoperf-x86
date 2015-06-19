@@ -4,7 +4,7 @@
 #include "coll/util.h"
 #include <sys/types.h>
 #include <unistd.h>
-
+#include <uuid/uuid.h>
 
 typedef struct {int minTimeRank; int maxTimeRank; int avTimeRank;} outputRanks_t;
 
@@ -89,11 +89,13 @@ void AP_CollectAndOutputRanks() {
   if (rank == 0) {
     uint64_t jobId;
     if (procData.disabled == 0) {
-      jobId = procData.jobId;
-    } else {
-      jobId = getpid();
-    }
-  
+    jobId = procData.jobId;
+    printf("[DEBUG] procData.jobId is %d\n",jobId);
+  } else {
+      uuid_generate_time(jobId);
+    printf("[DEBUG] procData is disabled %d\n",jobId);
+  }
+
     if (settings->flags.output_local != 0) {
       locFile = AP_openOutputFile(OUTPUT_LOCAL_DIR, NO_APPEND_PATH, jobId, NO_RANK_IN_NAME,
                                   settings->flags.debug_level);

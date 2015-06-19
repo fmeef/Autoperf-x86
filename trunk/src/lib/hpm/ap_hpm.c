@@ -122,10 +122,6 @@ int AP_HPM_Finalize() {
   /* Read counter data                                 */
   /*---------------------------------------------------*/
 
-  
-  elapsedCycles = stopCycle - startCycle;
-  elapsedTime = APCTCONV(elapsedCycles);
-
 
   return 0;
 }
@@ -139,6 +135,8 @@ int AP_HPM_GetData(ap_hpmData_t *data) {
   /*-------------------------------*/
   /* Return if not collecting data */
   /*-------------------------------*/
+  elapsedCycles = stopCycle - startCycle;
+  elapsedTime = APCTCONV(elapsedCycles);
 
   data->disabled = disabled;
   if (disabled != 0) return 0;

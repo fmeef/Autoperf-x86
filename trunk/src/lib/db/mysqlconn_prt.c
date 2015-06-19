@@ -135,7 +135,7 @@ int sql_connect(const char *host, const int port, const char *user, const char *
         return 0;
    }
 
-   job_id = getpid();
+   job_id = jobid; //probably broken
 
 
    if(procrank==0) {

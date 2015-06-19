@@ -2,7 +2,7 @@
 #include "ap_config.h"
 #include <sys/types.h>
 #include <unistd.h>
-
+#include <uuid/uuid.h>
 
 /*====================================================*/
 /* Collect and output data                            */
@@ -35,8 +35,10 @@ void AP_CollectAndOutputAll() {
   uint64_t jobId;
   if (procData.disabled == 0) {
     jobId = procData.jobId;
+    printf("[DEBUG] procData.jobId is %d\n",jobId);
   } else {
-    jobId = getpid();
+    uuid_generate_time(&jobId);
+    printf("[DEBUG] procData is disabled %d\n",jobId);
   }
 
   int rank;
