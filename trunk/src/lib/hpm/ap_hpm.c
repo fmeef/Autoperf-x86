@@ -171,7 +171,7 @@ void AP_HPM_GetEventName(int id, char * nameout) {
   memcpy(name , nameout,PAPI_MAX_STR_LEN *sizeof( char));
   if((retval =  PAPI_event_code_to_name(id, name)) < PAPI_OK) {
     printf("%s: Failed to convert event code %u to ID\n",PAPI_strerror(retval), id);
-    return "ERR";
+    return;
   }
 
   memcpy(nameout, name,sizeof( char)* PAPI_MAX_STR_LEN) ;

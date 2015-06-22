@@ -1,5 +1,3 @@
-//#include "spi/include/kernel/process.h"
-//#include "spi/include/kernel/memory.h"
 #include <hwloc.h>
 #include "time/ap_time.h"
 #include <unistd.h>
@@ -12,37 +10,39 @@
 #include <sys/resource.h>
 #include <uuid/uuid.h>
 // control flag
-static int disabled = 0;
 
-// cycle and time variables
-static ap_cycle_t startCycle = 0LL;
-static ap_cycle_t stopCycle = 0LL;
-static ap_cycle_t elapsedCycles = 0LL;
-static double elapsedTime = 0;
+
 
 //job id
 
-static uint64_t jobId;
+uint64_t jobId;
 
 // processor information
-static int numProcessesOnNode;
-static int processHWThreads;
+int numProcessesOnNode;
+int processHWThreads;
 
 // memory information
-static uint64_t heapMaxUsed;
+uint64_t heapMaxUsed;
 
 
 //hwloc topology tree
-static hwloc_topology_t topo;
+hwloc_topology_t topo;
 
 
+
+disabled = 0;
 
 /*==========================================================*/
 /* Function to initialize data collection                   */
 /*==========================================================*/
 
 int AP_Proc_Init(int disabledArg) {
-
+  // cycle and time variables
+  tmpStartCycle = 0;
+  tmpStopCycle = 0;
+  tmpElapsedCycles = 0;
+  tmpElapsedTime = 0.0;
+  disabled = 0;
   
   /*-------------------------------------------------------*/
   /* set collection control, return if not collecting data */
@@ -72,14 +72,14 @@ int AP_Proc_Start() {
   /*-------------------------------*/
   /* Return if not collecting data */
   /*-------------------------------*/
-
+  printf("START!\n");
   if (disabled != 0) return 0;
 
   /*---------------------*/
   /* Start process timer */
   /*---------------------*/
 
-  APCYCLES(startCycle);
+  APCYCLES(tmpStartCycle);
 
 
   return 0;
@@ -93,6 +93,8 @@ int AP_Proc_Start() {
 
 int AP_Proc_Stop() {
 
+  printf("STOP!\n");
+  
   /*-------------------------------*/
   /* Return if not collecting data */
   /*-------------------------------*/
@@ -103,7 +105,7 @@ int AP_Proc_Stop() {
   /* Stop process timer */
   /*--------------------*/
 
-  APCYCLES(stopCycle);
+  APCYCLES(tmpStopCycle);
 
 
   return 0;
@@ -169,8 +171,8 @@ int AP_Proc_GetData(ap_procData_t* data) {
   /* Determine process elapsed time */
   /*--------------------------------*/
 
-  elapsedCycles = stopCycle-startCycle;
-  elapsedTime = APCTCONV(elapsedCycles);
+  tmpElapsedCycles = tmpStopCycle-tmpStartCycle;
+  tmpElapsedTime = APCTCONV(tmpElapsedCycles);
 
   
   /*------------*/
@@ -191,10 +193,10 @@ int AP_Proc_GetData(ap_procData_t* data) {
   /* Copy data into struct */
   /*-----------------------*/
 
-  data->startCycle = startCycle;
-  data->stopCycle = stopCycle;
-  data->elapsedCycles = elapsedCycles;
-  data->elapsedTime = elapsedTime;
+  data->startCycle = tmpStartCycle;
+  data->stopCycle = tmpStopCycle;
+  data->elapsedCycles = tmpElapsedCycles;
+  data->elapsedTime = tmpElapsedTime;
   data->jobId = jobId;
   data->numProcessesOnNode = numProcessesOnNode;
   data->processHWThreads = processHWThreads;

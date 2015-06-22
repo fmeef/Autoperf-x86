@@ -15,7 +15,7 @@ static int hwThreadsPerCore = 0;
 int AP_Sys_Init(int disableArg) {
 
   disabled = disableArg;
-  if (disabled != 0) return 0;
+  if (disabled != 0) return 1;
 
 
   return 0;
@@ -28,7 +28,7 @@ int AP_Sys_Init(int disableArg) {
 
 int AP_Sys_Finalize(void) {
 
-  if (disabled != 0) return;
+  if (disabled != 0) return 1;
 
   coresPerNode = CORES_PER_NODE;
   hwThreadsPerCore = HW_THREADS_PER_CORE;
@@ -45,7 +45,7 @@ int AP_Sys_Finalize(void) {
 int AP_Sys_GetData(ap_sysData_t* data) {
 
   data->disabled = disabled;
-  if (disabled != 0) return;
+  if (disabled != 0) return 1;
 
   data->coresPerNode = coresPerNode;
   data->hwThreadsPerCore = hwThreadsPerCore;

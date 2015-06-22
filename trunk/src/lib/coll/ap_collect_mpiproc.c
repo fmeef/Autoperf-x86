@@ -92,7 +92,7 @@ void AP_CollectAndOutputRanks() {
     jobId = procData.jobId;
     printf("[DEBUG] procData.jobId is %d\n",jobId);
   } else {
-      uuid_generate_time(jobId);
+      uuid_generate_time(&jobId);
     printf("[DEBUG] procData is disabled %d\n",jobId);
   }
 

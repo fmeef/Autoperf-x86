@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include "time/ap_time.h"
-
+#include <hwloc.h>
 typedef struct {
   int disabled;
   ap_cycle_t startCycle, stopCycle, elapsedCycles;
@@ -10,6 +10,13 @@ typedef struct {
   int processHWThreads;
   uint64_t heapMaxUsed;
 } ap_procData_t;
+
+// cycle and time variables
+ap_cycle_t tmpStartCycle;
+ap_cycle_t tmpStopCycle;
+ap_cycle_t tmpElapsedCycles;
+double tmpElapsedTime;
+int disabled;
 
 int AP_Proc_Init(int );
 int AP_Proc_Start(void);
