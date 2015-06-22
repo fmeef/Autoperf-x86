@@ -1,58 +1,65 @@
-//#include "spi/include/kernel/process.h"
-//#include "spi/include/kernel/memory.h"
 #include <hwloc.h>
 #include "time/ap_time.h"
+#include <unistd.h>
+#include <errno.h>
 #include "proc/ap_proc.h"
 #include <sys/sysinfo.h>
 #include <linux/version.h>
 #include <sys/time.h>
 #include <sys/types.h>
-#include <unistd.h>
 #include <sys/resource.h>
+#include <uuid/uuid.h>
 // control flag
-static int disabled = 0;
 
-// cycle and time variables
-static ap_cycle_t startCycle = 0LL;
-static ap_cycle_t stopCycle = 0LL;
-static ap_cycle_t elapsedCycles = 0LL;
-static double elapsedTime = 0;
 
-// job id number
-static uint64_t jobId;
+
+//job id
+
+uuid_t jobId;
 
 // processor information
-static int numProcessesOnNode;
-static int processHWThreads;
+int numProcessesOnNode;
+int processHWThreads;
 
 // memory information
-static uint64_t heapMaxUsed;
+uint64_t heapMaxUsed;
 
 
 //hwloc topology tree
-static hwloc_topology_t topo;
+hwloc_topology_t topo;
 
 
+
+disabled = 0;
 
 /*==========================================================*/
 /* Function to initialize data collection                   */
 /*==========================================================*/
 
 int AP_Proc_Init(int disabledArg) {
-
+  // cycle and time variables
+  tmpStartCycle = 0;
+  tmpStopCycle = 0;
+  tmpElapsedCycles = 0;
+  tmpElapsedTime = 0.0;
+  disabled = 0;
+  
   /*-------------------------------------------------------*/
   /* set collection control, return if not collecting data */
   /*-------------------------------------------------------*/
-
+  
   disabled = disabledArg;
   if (disabled != 0) return 0;
 
 
-  hwloc_topology_init(&topo);
-  hwloc_topology_load(topo);
+  if(-1==hwloc_topology_init(&topo))
+    printf("ERR: hwloc topology init failed (%i)\n",__LINE__);
+  if(-1==hwloc_topology_load(topo))
+    printf("ERR: hwloc topology load failed (%i)\n", __LINE__);;
   
   return 0;
 }
+
 
 
 /*==========================================================*/
@@ -65,14 +72,14 @@ int AP_Proc_Start() {
   /*-------------------------------*/
   /* Return if not collecting data */
   /*-------------------------------*/
-
+  printf("START!\n");
   if (disabled != 0) return 0;
 
   /*---------------------*/
   /* Start process timer */
   /*---------------------*/
 
-  APCYCLES(startCycle);
+  APCYCLES(tmpStartCycle);
 
 
   return 0;
@@ -86,6 +93,8 @@ int AP_Proc_Start() {
 
 int AP_Proc_Stop() {
 
+  printf("STOP!\n");
+  
   /*-------------------------------*/
   /* Return if not collecting data */
   /*-------------------------------*/
@@ -96,7 +105,7 @@ int AP_Proc_Stop() {
   /* Stop process timer */
   /*--------------------*/
 
-  APCYCLES(stopCycle);
+  APCYCLES(tmpStopCycle);
 
 
   return 0;
@@ -115,19 +124,8 @@ int AP_Proc_Finalize() {
 
   if (disabled != 0) return 0;
 
-  /*--------------------------------*/
-  /* Determine process elapsed time */
-  /*--------------------------------*/
 
-  elapsedCycles = stopCycle-startCycle;
-  elapsedTime = APCTCONV(elapsedCycles);
-
-  /*------------*/
-  /* Get Job Id */
-  /*------------*/
-
-  jobId = getpid(); //not sure if this is right. If we need a unique identifyer it should work. 
-
+  
   /*--------------------------------*/
   /* Get cores and hardware threads */
   /*--------------------------------*/
@@ -135,10 +133,14 @@ int AP_Proc_Finalize() {
 
   struct sysinfo sinfo;
   int runningprocs;
-  if(sysinfo(&sinfo)==0)
+  if(sysinfo(&sinfo)==0) {
     runningprocs = (int) sinfo.procs;
-  else
+    //  printf("[DEBUG] set runningProcsOnNode to %d\n", runningprocs);
+  }
+  else {
+    printf("%s ]] ERR: failed to get running procs\n",__LINE__);
     runningprocs = (int) -1;
+  }
   numProcessesOnNode = runningprocs;
   processHWThreads = (int) hwloc_get_nbobjs_by_type(topo, HWLOC_OBJ_PU);
 
@@ -152,10 +154,11 @@ int AP_Proc_Finalize() {
   /* get the heap usage of the process, 0 if kernel does not support (not really) */
 
   getrusage(RUSAGE_SELF, &heapMaxUsed);
-  heapMaxUsed =0;
+  //heapMaxUsed =0;
 
   return 0;
 }
+
 
 
 /*==========================================================*/
@@ -164,6 +167,23 @@ int AP_Proc_Finalize() {
 
 int AP_Proc_GetData(ap_procData_t* data) {
 
+  /*--------------------------------*/
+  /* Determine process elapsed time */
+  /*--------------------------------*/
+
+  tmpElapsedCycles = tmpStopCycle-tmpStartCycle;
+  tmpElapsedTime = APCTCONV(tmpElapsedCycles);
+
+  
+  /*------------*/
+  /* Get Job Id */
+  /*------------*/
+
+  char id[39];
+  uuid_unparse(jobId, id);
+  uuid_generate_time(&jobId);
+  printf("[DEBUG] jobId (uuid) is %d\n (%i)", id, __LINE__);
+  
   /*-------------------------------*/
   /* Return if not collecting data */
   /*-------------------------------*/
@@ -175,11 +195,11 @@ int AP_Proc_GetData(ap_procData_t* data) {
   /* Copy data into struct */
   /*-----------------------*/
 
-  data->startCycle = startCycle;
-  data->stopCycle = stopCycle;
-  data->elapsedCycles = elapsedCycles;
-  data->elapsedTime = elapsedTime;
-  data->jobId = jobId;
+  data->startCycle = tmpStartCycle;
+  data->stopCycle = tmpStopCycle;
+  data->elapsedCycles = tmpElapsedCycles;
+  data->elapsedTime = tmpElapsedTime;
+  uuid_copy(data->jobId, jobId);
   data->numProcessesOnNode = numProcessesOnNode;
   data->processHWThreads = processHWThreads;
   data->heapMaxUsed = heapMaxUsed;

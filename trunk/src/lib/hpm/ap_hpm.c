@@ -28,17 +28,6 @@ static long long results[PAPI_NUM_EVENTS];
 /*=================================================================*/
 
 int AP_HPM_Init(int disabledArg) {
-
-  /*--------------------------------------------------*/
-  /* Debug for PAPI event decoding                    */
-  /*--------------------------------------------------*/
-
-  int i;
-  for(i=0;i<PAPI_NUM_EVENTS;i++) {
-    printf("[DEBUG] original event code: %d\n",pEventList[i]);
-  } 
-
-
   
   /*---------------------------------------------------*/
   /* return immediately if not logging data            */
@@ -133,10 +122,6 @@ int AP_HPM_Finalize() {
   /* Read counter data                                 */
   /*---------------------------------------------------*/
 
-  
-  elapsedCycles = stopCycle - startCycle;
-  elapsedTime = APCTCONV(elapsedCycles);
-
 
   return 0;
 }
@@ -150,6 +135,8 @@ int AP_HPM_GetData(ap_hpmData_t *data) {
   /*-------------------------------*/
   /* Return if not collecting data */
   /*-------------------------------*/
+  elapsedCycles = stopCycle - startCycle;
+  elapsedTime = APCTCONV(elapsedCycles);
 
   data->disabled = disabled;
   if (disabled != 0) return 0;
@@ -175,28 +162,17 @@ int AP_HPM_GetData(ap_hpmData_t *data) {
 /*===============================================================*/
 /* Return event label for id, null if bad id                     */
 /*===============================================================*/
-const char* AP_HPM_GetEventName(int id) {
+void AP_HPM_GetEventName(int id, char * nameout) {
   int ver = PAPI_library_init(PAPI_VER_CURRENT);
   if(ver != PAPI_VER_CURRENT)
-    printf("LIBRARY INIT ERR\n");
-  char *name;
-
-
-  int code;
-  PAPI_event_name_to_code("PAPI_L2_DCM",code);
-  
-  printf("[DEBUG] what I am expecting for first PAPI_L2_DCM: %d\n",code);
-  char * res;
-  PAPI_event_code_to_name(code, res);
-  
-  printf("this is the same code converted back (should be valid event): %s", res);
+    printf("LIBRARY INIT ERR\n");  
   int retval;
+  char name[PAPI_MAX_STR_LEN];
+  memcpy(name , nameout,PAPI_MAX_STR_LEN *sizeof( char));
   if((retval =  PAPI_event_code_to_name(id, name)) < PAPI_OK) {
-    printf("[DEBUG] %s Failed to convert event code %d to ID\n",PAPI_strerror(retval), id);
-    return "ERR";
+    printf("%s: Failed to convert event code %u to ID\n",PAPI_strerror(retval), id);
+    return;
   }
-  
- 
 
-  return name;
+  memcpy(nameout, name,sizeof( char)* PAPI_MAX_STR_LEN) ;
 }

@@ -4,19 +4,21 @@
 /*========================================================================*/
 /* Open output file                                                       */
 /*========================================================================*/
-FILE * AP_openOutputFile(char *dirRoot, int ymdSubDir, uint64_t jobid, int myRank, int debug) {
+FILE * AP_openOutputFile(char *dirRoot, int ymdSubDir, uuid_t jobid, int myRank, int debug) {
 
   /*--------------------------------------------*/
   /* construct the file name                    */
   /*--------------------------------------------*/
 
   char filename[FILENAME_MAX];
-
+  char id[39];
+  uuid_unparse(jobid,id);
+  
   if (ymdSubDir == NO_APPEND_PATH) {
     if (myRank == NO_RANK_IN_NAME ) {
-      sprintf(filename,"%s/ap.%llu", dirRoot, jobid);
+      sprintf(filename,"%s/ap.%s", dirRoot,id);
     } else {
-      sprintf(filename,"%s/ap.%llu.%d", dirRoot, jobid, myRank);
+      sprintf(filename,"%s/ap.%s.%d", dirRoot,id, myRank);
     }
   } else {
     time_t t = time(NULL);
@@ -24,10 +26,10 @@ FILE * AP_openOutputFile(char *dirRoot, int ymdSubDir, uint64_t jobid, int myRan
 
     if (myRank == NO_RANK_IN_NAME ) {
       //sprintf(filename,"%s/%d/%d/%d/ap.%llu", dirRoot, timeInfo->tm_year+1900, timeInfo->tm_mon+1,timeInfo->tm_mday, jobid);
-        sprintf(filename,"%s/ap.%llu", dirRoot,jobid);
+      sprintf(filename,"%s/ap.%s", dirRoot,id);
     } else {
     //sprintf(filename,"%s/%d/%d/%d/ap.%llu.%d", dirRoot, timeInfo->tm_year+1900, timeInfo->tm_mon+1,timeInfo->tm_mday, jobid, myRank);
-      sprintf(filename,"%s/ap.%llu.%d", dirRoot,jobid, myRank);
+      sprintf(filename,"%s/ap.%s.%d", dirRoot,id, myRank);
      }
   }
 
@@ -190,8 +192,9 @@ int AP_writeHPMData(FILE *fh, char *prefix, ap_hpmData_t *data) {
 
     int i;
     for(i = 0; i < PAPI_NUM_EVENTS; i++) {
-      fprintf(fh, "DEBUG id = %d\n",data->ids[i]);
-       fprintf(fh, "  %s%s = %llu\n", prefix, AP_HPM_GetEventName(data->ids[i]), data->counts[i]);
+      char * final = malloc(PAPI_MAX_STR_LEN * sizeof(char));
+      AP_HPM_GetEventName(data->ids[i], final);
+       fprintf(fh, "  %s%s = %llu\n", prefix,final, data->counts[i]);
     }
 
   }
@@ -307,7 +310,9 @@ int AP_writeHPMDataLoc(FILE *fh, ap_hpmData_t *data) {
 
     int i;
     for(i = 0; i < PAPI_NUM_EVENTS; i++) {
-       fprintf(fh, "    %s = %llu\n", AP_HPM_GetEventName(data->ids[i]), data->counts[i]);
+      char * name = malloc(PAPI_MAX_STR_LEN * sizeof(char));
+      AP_HPM_GetEventName(data->ids[i],name);
+       fprintf(fh, "    %s = %llu\n",name , data->counts[i]);
     }
   }
 

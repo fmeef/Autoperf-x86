@@ -1,7 +1,7 @@
 LIBSRC = ../src/lib
 CC = gcc
 BGSYS = /bgsys/drivers/ppcfloor
-INC =  -I /home/gnu3ra/Documents/argonne/scc15-spack/opt/unknown_arch/gcc@5.1.0/papi@5.4.1/include -L /home/gnu3ra/Documents/argonne/scc15-spack/opt/unknown_arch/gcc@5.1.0/papi@5.4.1/lib -I$(LIBSRC) -I/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include -I/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/hwloc@1.9/include/ 
+INC =-I ~/Documents/argonne/scc15-spack/opt/unknown_arch/gcc@5.1.0/hwloc@1.9.1/include -I ~/Documents/argonne/scc15-spack/opt/unknown_arch/gcc@5.1.0/mpich@3.0.4/include/ -I /home/gnu3ra/Documents/argonne/scc15-spack/opt/unknown_arch/gcc@5.1.0/papi@5.4.1/include -L /home/gnu3ra/Documents/argonne/scc15-spack/opt/unknown_arch/gcc@5.1.0/papi@5.4.1/lib -I$(LIBSRC) -I/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include -I/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/hwloc@1.9/include/ 
 
 CFLAGS = -g -O3 $(INC) -lhwloc
 

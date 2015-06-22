@@ -64,7 +64,6 @@ static void getEnv(ap_env_t *env) {
   if (ptr != NULL) {
     env->disable_hpm_env = 1;
   }
-
   env->output_local_env = 0;
   env->output_local_env_val = 0;
   ptr = getenv(XSTR(OUTPUT_LOCAL_ENV));
@@ -119,6 +118,9 @@ static void setFlags(ap_env_t *env, ap_flag_t *flags) {
   if (env->disable_hpm_env != 0) {
     flags->disable_hpm = 1;
   }
+
+  //DEBUG
+  // flags->disable_hpm = 1;
 
   flags->output_local = 0;
   if (env->output_local_env != 0) {
