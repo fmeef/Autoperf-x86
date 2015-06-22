@@ -1,11 +1,12 @@
 #include <stdint.h>
 #include "time/ap_time.h"
 #include <hwloc.h>
+#include <uuid/uuid.h>
 typedef struct {
   int disabled;
   ap_cycle_t startCycle, stopCycle, elapsedCycles;
   double elapsedTime;
-  uint64_t jobId;
+  uuid_t jobId;
   int numProcessesOnNode;
   int processHWThreads;
   uint64_t heapMaxUsed;

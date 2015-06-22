@@ -15,7 +15,7 @@
 
 //job id
 
-uint64_t jobId;
+uuid_t jobId;
 
 // processor information
 int numProcessesOnNode;
@@ -179,8 +179,10 @@ int AP_Proc_GetData(ap_procData_t* data) {
   /* Get Job Id */
   /*------------*/
 
+  char id[39];
+  uuid_unparse(jobId, id);
   uuid_generate_time(&jobId);
-  printf("[DEBUG] jobId (pid) is %d\n (%i)", jobId, __LINE__);
+  printf("[DEBUG] jobId (uuid) is %d\n (%i)", id, __LINE__);
   
   /*-------------------------------*/
   /* Return if not collecting data */
@@ -197,7 +199,7 @@ int AP_Proc_GetData(ap_procData_t* data) {
   data->stopCycle = tmpStopCycle;
   data->elapsedCycles = tmpElapsedCycles;
   data->elapsedTime = tmpElapsedTime;
-  data->jobId = jobId;
+  uuid_copy(data->jobId, jobId);
   data->numProcessesOnNode = numProcessesOnNode;
   data->processHWThreads = processHWThreads;
   data->heapMaxUsed = heapMaxUsed;

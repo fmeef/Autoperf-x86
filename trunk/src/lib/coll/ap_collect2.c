@@ -112,7 +112,9 @@ void Output_Data(ap_collData_t *data) {
   /* Determine output filename and open if needed */
   /*----------------------------------------------*/
 
-  FILE *fh = openOutputFile(data->procData.jobId, data->mpiData.myRank);
+
+  
+  FILE *fh = openOutputFile(id, data->mpiData.myRank);
 
   /*--------------------------------------------*/
   /* write a text output file with summary data */
@@ -141,8 +143,11 @@ void Output_Data(ap_collData_t *data) {
 
 void Write_ProcData(FILE *fh, ap_procData_t *data) {
 
+  char id[39];
+  uuid_unparse(data->jobId, id);
+  
   fprintf(fh,"Process Data-\n");
-  fprintf(fh,"  Job ID : %llu\n", data->jobId);
+  fprintf(fh,"  Job ID : %llu\n",id );
   fprintf(fh,"  HW Threads: %d\n", data->hwThreads);
   fprintf(fh,"  Node Processes : %d\n", data->numProcessesOnNode);
   fprintf(fh,"  Total elapsed time: %.3f sec\n", data->elapsedTime);

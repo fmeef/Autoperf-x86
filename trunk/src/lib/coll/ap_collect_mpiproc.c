@@ -87,13 +87,13 @@ void AP_CollectAndOutputRanks() {
   FILE *locFile = NULL;
   FILE *sysFile = NULL;
   if (rank == 0) {
-    uint64_t jobId;
+    uuid_t jobId;
     if (procData.disabled == 0) {
-    jobId = procData.jobId;
-    printf("[DEBUG] procData.jobId is %d\n",jobId);
+      uuid_copy(jobId, procData.jobId);
+   
   } else {
       uuid_generate_time(&jobId);
-    printf("[DEBUG] procData is disabled %d\n",jobId);
+   
   }
 
     if (settings->flags.output_local != 0) {

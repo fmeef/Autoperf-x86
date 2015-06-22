@@ -32,13 +32,12 @@ void AP_CollectAndOutputAll() {
   /*------------*/
 
 
-  uint64_t jobId;
+  uuid_t jobId;
   if (procData.disabled == 0) {
     jobId = procData.jobId;
-    printf("[DEBUG] procData.jobId is %d\n",jobId);
   } else {
     uuid_generate_time(&jobId);
-    printf("[DEBUG] procData is disabled %d\n",jobId);
+    
   }
 
   int rank;
