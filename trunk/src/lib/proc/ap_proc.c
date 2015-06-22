@@ -17,9 +17,7 @@
 
 uuid_t jobId;
 
-int processHWThreads;
-
-// memory information
+// memory information  
 uint64_t heapMaxUsed;
 
 
@@ -133,7 +131,6 @@ int AP_Proc_Finalize() {
   int runningprocs;
   if(sysinfo(&sinfo)==0) {
     runningprocs = (int) sinfo.procs;
-    //  printf("[DEBUG] set runningProcsOnNode to %d\n", runningprocs);
   }
   else {
     printf("%s ]] ERR: failed to get running procs\n",__LINE__);
@@ -141,6 +138,7 @@ int AP_Proc_Finalize() {
   }
   numProcessesOnNode = runningprocs;
   processHWThreads = (int) hwloc_get_nbobjs_by_type(topo, HWLOC_OBJ_PU);
+  
 
   /*------------------------*/
   /* Get memory information */
@@ -151,9 +149,12 @@ int AP_Proc_Finalize() {
 
   /* get the heap usage of the process, 0 if kernel does not support (not really) */
 
-  getrusage(RUSAGE_SELF, &heapMaxUsed);
-  //heapMaxUsed =0;
 
+  struct rusage us;
+  getrusage(RUSAGE_SELF, &us);
+  //heapMaxUsed =0;
+  heapMaxUsed = us.ru_maxrss;
+  printf("[DEBUG] heapMaxUsed = %d\n",heapMaxUsed);
   return 0;
 }
 

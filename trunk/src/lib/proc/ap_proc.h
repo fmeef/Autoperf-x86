@@ -21,6 +21,8 @@ int disabled;
 
 int numProcessesOnNode;
 
+int processHWThreads;
+
 int AP_Proc_Init(int );
 int AP_Proc_Start(void);
 int AP_Proc_Stop(void);
