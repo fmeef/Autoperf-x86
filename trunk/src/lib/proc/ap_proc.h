@@ -19,6 +19,8 @@ ap_cycle_t tmpElapsedCycles;
 double tmpElapsedTime;
 int disabled;
 
+int numProcessesOnNode;
+
 int AP_Proc_Init(int );
 int AP_Proc_Start(void);
 int AP_Proc_Stop(void);

@@ -17,8 +17,6 @@
 
 uuid_t jobId;
 
-// processor information
-int numProcessesOnNode;
 int processHWThreads;
 
 // memory information
