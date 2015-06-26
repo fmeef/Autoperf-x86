@@ -1,9 +1,11 @@
 LIBSRC = ../src/lib
 CC = gcc
 BGSYS = /bgsys/drivers/ppcfloor
-INC =-I ~/Documents/argonne/scc15-spack/opt/unknown_arch/gcc@5.1.0/hwloc@1.9.1/include -I ~/Documents/argonne/scc15-spack/opt/unknown_arch/gcc@5.1.0/mpich@3.0.4/include/ -I /home/gnu3ra/Documents/argonne/scc15-spack/opt/unknown_arch/gcc@5.1.0/papi@5.4.1/include -L /home/gnu3ra/Documents/argonne/scc15-spack/opt/unknown_arch/gcc@5.1.0/papi@5.4.1/lib -I$(LIBSRC) -I/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include -I/home/aballmer/scc15-spack/opt/unknown_arch/gcc@4.4.7/hwloc@1.9/include/ 
+SPACKDIR=/home/aballmer
+KSOURCE=/usr/src/kernels/2.6.32-279.19.1.el6.x86_64
+INC =-I $(SPACKDIR)/scc15-spack/opt/unknown_arch/gcc@5.1.0/hwloc@1.9.1/include -I $(SPACKDIR)/scc15-spack/opt/unknown_arch/gcc@5.1.0/mpich@3.0.4/include/ -I $(SPACKDIR)/scc15-spack/opt/unknown_arch/gcc@5.1.0/papi@5.4.1/include -L $(SPACKDIR)/scc15-spack/opt/unknown_arch/gcc@5.1.0/papi@5.4.1/lib -I$(LIBSRC) -I$(SPACKDIR)/scc15-spack/opt/unknown_arch/gcc@4.4.7/mpich@3.0.4/include -I$(SPACKDIR)/scc15-spack/opt/unknown_arch/gcc@4.4.7/hwloc@1.9/include/ -I $(SPACKDIR)/opt/unknown_arch/gcc@4.4.7/libuuid@1.0.3/include
 
-CFLAGS = -g -O3 $(INC) -lhwloc
+CFLAGS = -g -O3 $(INC) -lhwloc -luuid
 
 #------------------------------------------
 # targets
