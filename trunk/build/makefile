@@ -3,8 +3,9 @@ CC = gcc
 BGSYS = /bgsys/drivers/ppcfloor
 SPACKDIR=/home/gnu3ra/Documents/argonne/scc15-spack
 KSOURCE=/usr/src/kernels/2.6.32-279.19.1.el6.x86_64
-GCC=$(shell gcc --version | grep ^gcc | sed 's/^.* //g')
+GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
 INC =-I $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/hwloc@1.9.1/include -I $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/mpich@3.0.4/include/ -I $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/papi@5.4.1/include -L $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/papi@5.4.1/lib -I$(LIBSRC) -I$(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/mpich@3.0.4/include -I$(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/hwloc@1.9/include/ -I $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/libuuid@1.0.3/include
+
 
 CFLAGS = -g -O3 $(INC) -lhwloc
 
@@ -58,3 +59,9 @@ mpiwrappers_f.o: $(LIBSRC)/mpi/mpiwrappers_f.c $(LIBSRC)/autoperf.h $(LIBSRC)/mp
 mpiwrappers_f_underscore.o: $(LIBSRC)/mpi/mpiwrappers_f_underscore.c $(LIBSRC)/autoperf.h $(LIBSRC)/mpi/ap_mpi.h $(LIBSRC)/mpi/fpmpi.h $(LIBSRC)/ap_config.h
 	$(CC) -c $(CFLAGS) $(LIBSRC)/mpi/mpiwrappers_f_underscore.c
 
+
+
+#GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
+#CFLAGS = -O0 -g -lpapi -lhwloc -luuid -lautoperf
+#INC=-O0 -I $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/mpich@3.0.4/include -I  $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/hwloc@1.9.1/include/ -L  $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/hwloc@1.9.1/lib -L ../build -I ../src/lib -L$(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/papi@5.4.1/lib -I $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/papi@5.4.1/include
+#perftest: test.c

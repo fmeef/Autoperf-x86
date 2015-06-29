@@ -154,7 +154,6 @@ int AP_Proc_Finalize() {
   getrusage(RUSAGE_SELF, &us);
   //heapMaxUsed =0;
   heapMaxUsed = us.ru_maxrss;
-  printf("[DEBUG] heapMaxUsed = %d\n",heapMaxUsed);
   return 0;
 }
 
@@ -181,7 +180,6 @@ int AP_Proc_GetData(ap_procData_t* data) {
   char id[39];
   uuid_unparse(jobId, id);
   uuid_generate_time(&jobId);
-  printf("[DEBUG] jobId (uuid) is %d\n (%i)", id, __LINE__);
   
   /*-------------------------------*/
   /* Return if not collecting data */
