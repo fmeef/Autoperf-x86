@@ -7,7 +7,7 @@ GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
 INC = -I$(LIBSRC) 
 
 
-CFLAGS = -g -O3 $(INC) -lhwloc
+CFLAGS = -g -O3 $(INC) -lhwloc -lpapi -lmpich
 
 #------------------------------------------
 # targets
