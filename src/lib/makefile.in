@@ -8,7 +8,7 @@ INC = -I$(LIBSRC)
 
 prefix = @prefix@
 
-CFLAGS = -g -O3 $(INC) -lhwloc
+CFLAGS = -g -O3 $(INC) -lhwloc -lmpich
 
 #------------------------------------------
 # targets
