@@ -3830,6 +3830,121 @@ if test "$ac_res" != no; then :
   
 fi
 
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing PAPI_start_counters" >&5
+$as_echo_n "checking for library containing PAPI_start_counters... " >&6; }
+if ${ac_cv_search_PAPI_start_counters+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_func_search_save_LIBS=$LIBS
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char PAPI_start_counters ();
+int
+main ()
+{
+return PAPI_start_counters ();
+  ;
+  return 0;
+}
+_ACEOF
+for ac_lib in '' papi; do
+  if test -z "$ac_lib"; then
+    ac_res="none required"
+  else
+    ac_res=-l$ac_lib
+    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+  fi
+  if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_search_PAPI_start_counters=$ac_res
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext
+  if ${ac_cv_search_PAPI_start_counters+:} false; then :
+  break
+fi
+done
+if ${ac_cv_search_PAPI_start_counters+:} false; then :
+  
+else
+  ac_cv_search_PAPI_start_counters=no
+fi
+rm conftest.$ac_ext
+LIBS=$ac_func_search_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_PAPI_start_counters" >&5
+$as_echo "$ac_cv_search_PAPI_start_counters" >&6; }
+ac_res=$ac_cv_search_PAPI_start_counters
+if test "$ac_res" != no; then :
+  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+  
+fi
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing uuid_generate_time" >&5
+$as_echo_n "checking for library containing uuid_generate_time... " >&6; }
+if ${ac_cv_search_uuid_generate_time+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_func_search_save_LIBS=$LIBS
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char uuid_generate_time ();
+int
+main ()
+{
+return uuid_generate_time ();
+  ;
+  return 0;
+}
+_ACEOF
+for ac_lib in '' libuuid; do
+  if test -z "$ac_lib"; then
+    ac_res="none required"
+  else
+    ac_res=-l$ac_lib
+    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+  fi
+  if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_search_uuid_generate_time=$ac_res
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext
+  if ${ac_cv_search_uuid_generate_time+:} false; then :
+  break
+fi
+done
+if ${ac_cv_search_uuid_generate_time+:} false; then :
+  
+else
+  ac_cv_search_uuid_generate_time=no
+fi
+rm conftest.$ac_ext
+LIBS=$ac_func_search_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_uuid_generate_time" >&5
+$as_echo "$ac_cv_search_uuid_generate_time" >&6; }
+ac_res=$ac_cv_search_uuid_generate_time
+if test "$ac_res" != no; then :
+  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+  
+fi
+
+
+
+
 # Checks for header files.
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for grep that handles long lines and -e" >&5
