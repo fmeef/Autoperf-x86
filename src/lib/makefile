@@ -4,8 +4,9 @@ BGSYS = /bgsys/drivers/ppcfloor
 SPACKDIR=/home/gnu3ra/Documents/argonne/scc15-spack
 KSOURCE=/usr/src/kernels/2.6.32-279.19.1.el6.x86_64
 GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
-INC = -I$(LIBSRC) 
+INC = -I$(LIBSRC)
 
+prefix = @prefix@
 
 CFLAGS = -g -O3 $(INC) -lhwloc
 
@@ -60,8 +61,10 @@ mpiwrappers_f_underscore.o: $(LIBSRC)/mpi/mpiwrappers_f_underscore.c $(LIBSRC)/a
 	$(CC) -c $(CFLAGS) $(LIBSRC)/mpi/mpiwrappers_f_underscore.c
 
 
+install: libautoperf.a
+	install -m 0755 libautoperf.a $(prefix)/lib
+	install -m 0644 $(LIBSRC)/autoperf.h $(prefix)/include
 
-#GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
-#CFLAGS = -O0 -g -lpapi -lhwloc -luuid -lautoperf
-#INC=-O0 -I $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/mpich@3.0.4/include -I  $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/hwloc@1.9.1/include/ -L  $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/hwloc@1.9.1/lib -L ../build -I ../src/lib -L$(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/papi@5.4.1/lib -I $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/papi@5.4.1/include
-#perftest: test.c
+
+
+.PHONY: install
