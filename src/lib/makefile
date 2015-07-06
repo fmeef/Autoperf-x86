@@ -1,4 +1,4 @@
-LIBSRC = ./src/lib
+LIBSRC = ./
 CC = gcc
 BGSYS = /bgsys/drivers/ppcfloor
 SPACKDIR=/home/gnu3ra/Documents/argonne/scc15-spack
@@ -7,12 +7,12 @@ GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
 INC = -I$(LIBSRC) 
 
 
-CFLAGS = -g -O3 $(INC) -lmpich -lhwloc -lpapi 
+CFLAGS = -g -O3 $(INC) -lhwloc
 
 #------------------------------------------
 # targets
 #default: all
-#all:	libautoperf.a
+all:	libautoperf.a
 #------------------------------------------
 
 libautoperf.a: autoperf.o ap_collect.o ap_collect_mpiproc.o ap_hpm.o ap_proc.o ap_sys.o ap_mpi.o mpiwrappers_c.o mpiwrappers_f.o mpiwrappers_f_underscore.o util.o
