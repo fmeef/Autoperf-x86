@@ -1,14 +1,16 @@
 LIBSRC = ./
-CC = gcc
+CC = @CC@
+LIBS = @LIBS@
+CFLAGS_MAIN = @CFLAGS@
 BGSYS = /bgsys/drivers/ppcfloor
 SPACKDIR=/home/gnu3ra/Documents/argonne/scc15-spack
 KSOURCE=/usr/src/kernels/2.6.32-279.19.1.el6.x86_64
-GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
+#GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
 INC = -I$(LIBSRC)
 
 prefix = @prefix@
 
-CFLAGS = -g -O3 $(INC) -lhwloc -lmpich
+CFLAGS = $(CFLAGS_MAIN) $(INC) $(LIBS) 
 
 #------------------------------------------
 # targets
