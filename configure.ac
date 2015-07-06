@@ -19,7 +19,7 @@ AC_PROG_RANLIB
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-lhwloc':
 AC_CHECK_LIB([hwloc], [main])
-AC_SEARCH_LIB([PMPI_Init],[mpich])
+AC_SEARCG_LIBS([PMPI_Init],[mpich])
 # Checks for header files.
 AC_CHECK_HEADERS([limits.h stdint.h stdlib.h string.h sys/time.h unistd.h])
 
