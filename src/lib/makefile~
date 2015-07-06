@@ -1,0 +1,67 @@
+LIBSRC = ./
+CC = gcc
+BGSYS = /bgsys/drivers/ppcfloor
+SPACKDIR=/home/gnu3ra/Documents/argonne/scc15-spack
+KSOURCE=/usr/src/kernels/2.6.32-279.19.1.el6.x86_64
+GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
+INC = -I$(LIBSRC) 
+
+
+CFLAGS = -g -O3 $(INC) -lhwloc
+
+#------------------------------------------
+# targets
+#default: all
+Xall:	libautoperf.a
+#------------------------------------------
+
+libautoperf.a: autoperf.o ap_collect.o ap_collect_mpiproc.o ap_hpm.o ap_proc.o ap_sys.o ap_mpi.o mpiwrappers_c.o mpiwrappers_f.o mpiwrappers_f_underscore.o util.o
+	ar crv $@ $^
+	chmod 644 libautoperf.a
+
+clean ::
+	rm -f *.a *.o
+
+#------------------------------------------
+# rules
+#------------------------------------------
+
+autoperf.o: $(LIBSRC)/autoperf.c $(LIBSRC)/hpm/ap_hpm.h $(LIBSRC)/mpi/ap_mpi.h $(LIBSRC)/proc/ap_proc.h $(LIBSRC)/ap_config.h
+	$(CC) -c $(CFLAGS) $(LIBSRC)/autoperf.c
+
+ap_collect.o: $(LIBSRC)/coll/ap_collect.c
+	$(CC) -c $(CFLAGS) $(LIBSRC)/coll/ap_collect.c
+
+ap_collect_mpiproc.o: $(LIBSRC)/coll/ap_collect_mpiproc.c $(LIBSRC)/hpm/ap_hpm.h $(LIBSRC)/mpi/ap_mpi.h $(LIBSRC)/proc/ap_proc.h $(LIBSRC)/sys/ap_sys.h $(LIBSRC)/autoperf.h $(LIBSRC)/coll/util.h
+	$(CC) -c $(CFLAGS) $(LIBSRC)/coll/ap_collect_mpiproc.c
+
+util.o: $(LIBSRC)/coll/util.c
+	$(CC) -c $(CFLAGS) $(LIBSRC)/coll/util.c
+
+ap_hpm.o: $(LIBSRC)/hpm/ap_hpm.c $(LIBSRC)/ap_config.h $(LIBSRC)/hpm/ap_hpm.h $(LIBSRC)/ap_config.h
+	$(CC) -c $(CFLAGS) $(LIBSRC)/hpm/ap_hpm.c
+
+ap_proc.o: $(LIBSRC)/proc/ap_proc.c $(LIBSRC)/proc/ap_proc.h $(LIBSRC)/time/ap_time.h 
+	$(CC) -c $(CFLAGS) $(LIBSRC)/proc/ap_proc.c
+
+ap_sys.o: $(LIBSRC)/sys/ap_sys.c $(LIBSRC)/sys/ap_sys.h $(LIBSRC)/ap_config.h
+	$(CC) -c $(CFLAGS) $(LIBSRC)/sys/ap_sys.c
+
+ap_mpi.o: $(LIBSRC)/mpi/ap_mpi.c $(LIBSRC)/mpi/ap_mpi.h $(LIBSRC)/ap_config.h
+	$(CC) -c $(CFLAGS) $(LIBSRC)/mpi/ap_mpi.c
+
+mpiwrappers_c.o: $(LIBSRC)/mpi/mpiwrappers_c.c $(LIBSRC)/autoperf.h $(LIBSRC)/mpi/ap_mpi.h $(LIBSRC)/ap_config.h
+	$(CC) -c $(CFLAGS) $(LIBSRC)/mpi/mpiwrappers_c.c
+
+mpiwrappers_f.o: $(LIBSRC)/mpi/mpiwrappers_f.c $(LIBSRC)/autoperf.h $(LIBSRC)/mpi/ap_mpi.h $(LIBSRC)/mpi/fpmpi.h $(LIBSRC)/ap_config.h
+	$(CC) -c $(CFLAGS) $(LIBSRC)/mpi/mpiwrappers_f.c
+
+mpiwrappers_f_underscore.o: $(LIBSRC)/mpi/mpiwrappers_f_underscore.c $(LIBSRC)/autoperf.h $(LIBSRC)/mpi/ap_mpi.h $(LIBSRC)/mpi/fpmpi.h $(LIBSRC)/ap_config.h
+	$(CC) -c $(CFLAGS) $(LIBSRC)/mpi/mpiwrappers_f_underscore.c
+
+
+
+#GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
+#CFLAGS = -O0 -g -lpapi -lhwloc -luuid -lautoperf
+#INC=-O0 -I $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/mpich@3.0.4/include -I  $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/hwloc@1.9.1/include/ -L  $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/hwloc@1.9.1/lib -L ../build -I ../src/lib -L$(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/papi@5.4.1/lib -I $(SPACKDIR)/opt/unknown_arch/gcc@$(GCC)/papi@5.4.1/include
+#perftest: test.c
