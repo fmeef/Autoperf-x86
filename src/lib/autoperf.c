@@ -159,7 +159,7 @@ void AP_Init() {
   /*-------------------------------------------------------*/
   /* Get environment variables and set flags               */
   /*-------------------------------------------------------*/
-  //printf("[DEBUG] begin AP_Init()\n");
+  printf("[DEBUG] begin AP_Init()\n");
   getEnv(&(apSettings.env));
   setFlags(&(apSettings.env), &(apSettings.flags));
   //printf("[DEBUG] flags set\n");
