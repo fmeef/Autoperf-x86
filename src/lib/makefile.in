@@ -64,8 +64,8 @@ mpiwrappers_f_underscore.o: $(LIBSRC)/mpi/mpiwrappers_f_underscore.c $(LIBSRC)/a
 
 
 install: libautoperf.a
-	install -m 0755 libautoperf.a $(prefix)/lib
-	install -m 0644 $(LIBSRC)/autoperf.h $(prefix)/include
+	install -D -m 0755 libautoperf.a $(prefix)/lib/libautoperf.a
+	install -D -m 0644 $(LIBSRC)/autoperf.h $(prefix)/include/libautoperf.h
 
 
 
