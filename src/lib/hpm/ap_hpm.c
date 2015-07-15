@@ -71,7 +71,7 @@ int AP_HPM_Start() {
     printf("Starting counters failed: %s\n", PAPI_strerror(retval));
     return 1;
   }
-
+  APCYCLES(startCycle);
 
   return 0;
 }
