@@ -76,7 +76,7 @@ int AP_Proc_Start() {
   /*---------------------*/
 
   APCYCLES(tmpStartCycle);
-
+  APTIME(startWallclock);
 
   return 0;
 }
@@ -102,7 +102,7 @@ int AP_Proc_Stop() {
   /*--------------------*/
 
   APCYCLES(tmpStopCycle);
-
+  APTIME(endWallclock);
 
   return 0;
 }
@@ -170,8 +170,7 @@ int AP_Proc_GetData(ap_procData_t* data) {
   /*--------------------------------*/
 
   tmpElapsedCycles = tmpStopCycle-tmpStartCycle;
-  tmpElapsedTime = APCTCONV(tmpElapsedCycles);
-
+  double tmpElepasedTime = (double) endWallclock - startWallclock;
   
   /*------------*/
   /* Get Job Id */

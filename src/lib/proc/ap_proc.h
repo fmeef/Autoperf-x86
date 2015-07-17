@@ -18,7 +18,8 @@ ap_cycle_t tmpStopCycle;
 ap_cycle_t tmpElapsedCycles;
 double tmpElapsedTime;
 int disabled;
-
+long long startWallclock;
+long long endWallclock;
 int numProcessesOnNode;
 
 int processHWThreads;

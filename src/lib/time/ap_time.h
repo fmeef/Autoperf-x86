@@ -14,4 +14,6 @@ typedef uint64_t ap_cycle_t;
 #define APCYCLES(TB) TB = PAPI_get_real_cyc()
 #define APCTCONV(TB) (SEC_PER_CYCLE*((double) (TB)))
 
+
+#define APTIME(X) X = PAPI_get_real_usec()
 #endif
