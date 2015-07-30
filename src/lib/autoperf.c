@@ -157,6 +157,21 @@ static void setFlags(ap_env_t *env, ap_flag_t *flags) {
 void AP_Init() {
 
   /*-------------------------------------------------------*/
+  /* Wait for debugger to attach to process                */
+  /*-------------------------------------------------------*/
+  
+    int i = 0;
+    char hostname[256];
+    gethostname(hostname, sizeof(hostname));
+    printf("PID %d on %s ready for attach\n", getpid(), hostname);
+    fflush(stdout);
+    while (0 == i)
+      sleep(5);
+ 
+
+
+  
+  /*-------------------------------------------------------*/
   /* Get environment variables and set flags               */
   /*-------------------------------------------------------*/
   printf("[DEBUG] begin AP_Init()\n");
