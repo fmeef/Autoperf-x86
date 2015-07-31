@@ -159,7 +159,7 @@ void AP_Init() {
   /*-------------------------------------------------------*/
   /* Wait for debugger to attach to process                */
   /*-------------------------------------------------------*/
-  
+  /*
     int i = 0;
     char hostname[256];
     gethostname(hostname, sizeof(hostname));
@@ -168,7 +168,7 @@ void AP_Init() {
     while (0 == i)
       sleep(5);
  
-
+  */
 
   
   /*-------------------------------------------------------*/
