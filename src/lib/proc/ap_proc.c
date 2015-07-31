@@ -170,15 +170,15 @@ int AP_Proc_GetData(ap_procData_t* data) {
   /*--------------------------------*/
 
   tmpElapsedCycles = tmpStopCycle-tmpStartCycle;
-  double tmpElepasedTime = (double) endWallclock - startWallclock;
+  double tmpElepasedTime =  endWallclock - startWallclock;
   
   /*------------*/
   /* Get Job Id */
   /*------------*/
 
   char id[39];
-  uuid_unparse(jobId, id);
   uuid_generate_time(&jobId);
+  uuid_unparse(jobId, id);
   
   /*-------------------------------*/
   /* Return if not collecting data */
