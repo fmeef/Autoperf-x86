@@ -19,7 +19,7 @@ AC_PROG_RANLIB
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-lhwloc':
 AC_CHECK_LIB([hwloc], [main])
-AC_SEARCH_LIBS([PMPI_Init],[mpich])
+AC_SEARCH_LIBS([PMPI_Init],[mvapich2])
 AC_SEARCH_LIBS([PAPI_start_counters], [papi])
 AC_SEARCH_LIBS([uuid_generate_time], [libuuid])
 
