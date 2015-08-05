@@ -1,6 +1,6 @@
 LIBSRC = ./
 CC = cc
-MPIINC=
+MPIINC= -I /soft/libraries/mpi/mvapich2/gcc/include
 LIBS = -lpapi -lmpich -lhwloc 
 CFLAGS_MAIN = -g -O2
 BGSYS = /bgsys/drivers/ppcfloor
