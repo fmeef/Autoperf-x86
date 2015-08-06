@@ -206,6 +206,7 @@ int AP_Proc_GetData(ap_procData_t* data) {
   data->numProcessesOnNode = numProcessesOnNode;
   data->processHWThreads = processHWThreads;
   data->heapMaxUsed = heapMaxUsed;
+  data->cobaltId = malloc(8);
   strcpy(data->cobaltId,tmpid);
 
   return 0;
