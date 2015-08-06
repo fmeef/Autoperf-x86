@@ -10,8 +10,8 @@
 
 // configure output
 //#define OUTPUT_SYS_DIR "/gpfs/mira-fs0/logs/autoperf"
-#define OUTPUT_SYS_DIR "/home/aballmer"
-#define OUTPUT_LOCAL_DIR "."
+#define OUTPUT_SYS_DIR "/home/aballmer/ap"
+#define OUTPUT_LOCAL_DIR "/home/aballmer/ap"
 
 // configure system component
 #define CORES_PER_NODE 16

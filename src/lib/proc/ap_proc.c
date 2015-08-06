@@ -15,7 +15,7 @@
 
 //job id
 
-uuid_t jobId;
+
 
 // memory information  
 uint64_t heapMaxUsed;
@@ -171,11 +171,18 @@ int AP_Proc_GetData(ap_procData_t* data) {
 
   tmpElapsedCycles = tmpStopCycle-tmpStartCycle;
   double tmpElepasedTime =  endWallclock - startWallclock;
+
+
+
+  /*get cobalt job id*/
+  data->cobaltId = getenv("COBALT_JOBID");
+  
+
   
   /*------------*/
   /* Get Job Id */
   /*------------*/
-
+  
   char id[39];
   uuid_generate_time(&jobId);
   uuid_unparse(jobId, id);
