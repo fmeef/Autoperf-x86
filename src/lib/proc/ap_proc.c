@@ -176,7 +176,7 @@ int AP_Proc_GetData(ap_procData_t* data) {
 
   /*get cobalt job id*/
   const char * tmpid = getenv("COBALT_JOBID");
-  
+  printf("cobalt job id: %d",tmpid);
 
   
   /*------------*/

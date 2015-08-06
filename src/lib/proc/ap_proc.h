@@ -10,7 +10,7 @@ typedef struct {
   int numProcessesOnNode;
   int processHWThreads;
   uint64_t heapMaxUsed;
-  const char * cobaltId;
+  char * cobaltId;
 } ap_procData_t;
 
 // cycle and time variables
