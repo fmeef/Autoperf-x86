@@ -147,7 +147,7 @@ int AP_writeProcData(FILE *fh, char *prefix, ap_procData_t *data) {
   fprintf(fh, "  %sdisabled = %d\n", prefix, data->disabled);
 
   if (data->disabled == 0) {
-    fprintf(fh, "  %scobaltid = %s\n", prefix, data->cobaltId);
+    // fprintf(fh, "  %scobaltid = %s\n", prefix, data->cobaltId);
     fprintf(fh, "  %sstartCycle = %llu\n", prefix, data->startCycle);
     fprintf(fh, "  %sstopCycle = %llu\n", prefix, data->stopCycle);
     fprintf(fh, "  %selapsedCycles = %llu\n", prefix, data->elapsedCycles);

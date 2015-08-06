@@ -175,8 +175,8 @@ int AP_Proc_GetData(ap_procData_t* data) {
 
 
   /*get cobalt job id*/
-  const char * tmpid = getenv("COBALT_JOBID");
-  printf("cobalt job id: %d",tmpid);
+  //const char * tmpid = getenv("COBALT_JOBID");
+  //printf("cobalt job id: %d",tmpid);
 
   
   /*------------*/
@@ -206,8 +206,8 @@ int AP_Proc_GetData(ap_procData_t* data) {
   data->numProcessesOnNode = numProcessesOnNode;
   data->processHWThreads = processHWThreads;
   data->heapMaxUsed = heapMaxUsed;
-  data->cobaltId = malloc(8);
-  strcpy(data->cobaltId,tmpid);
+  //  data->cobaltId = malloc(8);
+  // strcpy(data->cobaltId,tmpid);
 
   return 0;
 }
