@@ -183,8 +183,6 @@ void AP_Init() {
   /* Initialize components                                 */
   /*-------------------------------------------------------*/
   int rank;
-  MPI_Commm_rank(MPI_COMM_WORLD,&rank);
-  if(rank==0) {
     AP_Sys_Init(apSettings.flags.disable_sys);
     //printf("[DEBUG] finished AP_Sys_Init()\n");
     AP_Proc_Init(apSettings.flags.disable_proc);
@@ -200,7 +198,7 @@ void AP_Init() {
     //printf("[DEBUG] finished AP_HPM_Start()\n");
     AP_Proc_Start();
     // printf("[DEBUG] finished AP_Proc_start()\n");
-  }
+  
 
   return;
 }
@@ -214,9 +212,7 @@ void AP_Finalize() {
   /*--------------------------------------------------------*/
   /* Stop components                                        */
   /*--------------------------------------------------------*/
- int rank;
-  MPI_Commm_rank(MPI_COMM_WORLD,&rank);
-  if(rank==0) {
+
     PMPI_Barrier(MPI_COMM_WORLD);
     
     AP_Proc_Stop();
@@ -237,7 +233,7 @@ void AP_Finalize() {
     
     AP_CollectAndOutput();
 
-  }
+  
   return;
 }
 
