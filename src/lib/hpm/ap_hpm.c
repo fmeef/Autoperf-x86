@@ -1,7 +1,7 @@
 #include <papi.h>
 #include "autoperf.h"
 #include "hpm/ap_hpm.h"
-
+#include <mpi.h>
 static int disabled = 0;
 
 static ap_cycle_t startCycle, stopCycle, elapsedCycles;

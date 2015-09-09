@@ -1,13 +1,12 @@
 LIBSRC = ./
-CC = cc
-MPIINC= -I /soft/libraries/mpi/mvapich2/gcc/include
-LIBS = -lpapi -lmpich -lhwloc 
+CC = gcc
+LIBS = 
 CFLAGS_MAIN = -g -O2
 BGSYS = /bgsys/drivers/ppcfloor
 SPACKDIR=/home/gnu3ra/Documents/argonne/scc15-spack
 KSOURCE=/usr/src/kernels/2.6.32-279.19.1.el6.x86_64
 #GCC:=$(shell gcc --version | grep gcc | awk {' print $$3 '})
-INC = -I$(LIBSRC) -I$(MPIINC)
+INC = -I$(LIBSRC) -I/soft/libraries/mpi/mvapich2/gcc/include
 
 prefix = /usr/local
 
