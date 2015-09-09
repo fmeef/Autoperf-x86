@@ -34,6 +34,12 @@ int AP_HPM_Init(int disabledArg) {
   /*---------------------------------------------------*/
 
   disabled = disabledArg;
+
+  int rank;
+  MPI_Comm_rank(MPI_COMM_WORLD,&rank);
+  if(rank!=0)
+    disabled=1;
+  
   if (disabled != 0) return 0;
 
   /*------------------*/

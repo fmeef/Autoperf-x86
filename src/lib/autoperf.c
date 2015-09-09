@@ -182,23 +182,25 @@ void AP_Init() {
   /*-------------------------------------------------------*/
   /* Initialize components                                 */
   /*-------------------------------------------------------*/
-
-  AP_Sys_Init(apSettings.flags.disable_sys);
-  //printf("[DEBUG] finished AP_Sys_Init()\n");
-  AP_Proc_Init(apSettings.flags.disable_proc);
-  //printf("[DEBUG] finished AP_Proc_Init()\n");
-  AP_HPM_Init(apSettings.flags.disable_hpm);
-  //printf("[DEBUG] finished AP_HPM_Init()\n");
-  AP_MPI_Init(apSettings.flags.disable_mpi);
-  //printf("[DEBUG] finished AP_MPI_Init()\n");
-
-  PMPI_Barrier(MPI_COMM_WORLD);
-  //printf("[DEBUG] finished PMPI_Barrier\n");
-  AP_HPM_Start();
-  //printf("[DEBUG] finished AP_HPM_Start()\n");
-  AP_Proc_Start();
-  // printf("[DEBUG] finished AP_Proc_start()\n");
-
+  int rank;
+  MPI_Commm_rank(MPI_COMM_WORLD,&rank);
+  if(rank==0) {
+    AP_Sys_Init(apSettings.flags.disable_sys);
+    //printf("[DEBUG] finished AP_Sys_Init()\n");
+    AP_Proc_Init(apSettings.flags.disable_proc);
+    //printf("[DEBUG] finished AP_Proc_Init()\n");
+    AP_HPM_Init(apSettings.flags.disable_hpm);
+    //printf("[DEBUG] finished AP_HPM_Init()\n");
+    AP_MPI_Init(apSettings.flags.disable_mpi);
+    //printf("[DEBUG] finished AP_MPI_Init()\n");
+    
+    PMPI_Barrier(MPI_COMM_WORLD);
+    //printf("[DEBUG] finished PMPI_Barrier\n");
+    AP_HPM_Start();
+    //printf("[DEBUG] finished AP_HPM_Start()\n");
+    AP_Proc_Start();
+    // printf("[DEBUG] finished AP_Proc_start()\n");
+  }
 
   return;
 }
@@ -212,28 +214,30 @@ void AP_Finalize() {
   /*--------------------------------------------------------*/
   /* Stop components                                        */
   /*--------------------------------------------------------*/
+ int rank;
+  MPI_Commm_rank(MPI_COMM_WORLD,&rank);
+  if(rank==0) {
+    PMPI_Barrier(MPI_COMM_WORLD);
+    
+    AP_Proc_Stop();
+    AP_HPM_Stop();
+    
+    /*--------------------------------------------------------*/
+    /* Finalize components                                    */
+    /*--------------------------------------------------------*/
+    
+    AP_MPI_Finalize();
+    AP_HPM_Finalize();
+    AP_Proc_Finalize();
+    AP_Sys_Finalize();
+    
+    /*--------------------------------------------------------*/
+    /* Collect and output data                                */
+    /*--------------------------------------------------------*/
+    
+    AP_CollectAndOutput();
 
-  PMPI_Barrier(MPI_COMM_WORLD);
-
-  AP_Proc_Stop();
-  AP_HPM_Stop();
-
-  /*--------------------------------------------------------*/
-  /* Finalize components                                    */
-  /*--------------------------------------------------------*/
-
-  AP_MPI_Finalize();
-  AP_HPM_Finalize();
-  AP_Proc_Finalize();
-  AP_Sys_Finalize();
-
-  /*--------------------------------------------------------*/
-  /* Collect and output data                                */
-  /*--------------------------------------------------------*/
-
-  AP_CollectAndOutput();
-
-
+  }
   return;
 }
 
